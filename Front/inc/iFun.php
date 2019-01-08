@@ -58,6 +58,13 @@ function cGet(){// collect get params
     array_push( $COLL, array("prob",$h ) ) ;
     return;
   }
+  if(isset($_GET[ "sub" ])){ // feltöltés
+    $h=getHead($_GET[ "sub" ]);
+    $MAGAM.="/feladatok/".$h[1]."/feltölt";
+    array_push( $COLL, array("prob",$h ) ) ;
+    return;
+  }
+
 }
 
 
