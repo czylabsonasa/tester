@@ -14,13 +14,18 @@
     <?php 
     foreach( $COLL as $idx => $val ){
       if("prob"==$val[0]){ //feladat
+        $h=$val[1];
         echo '<div class="feladat">' ;
-        include( $val[1] ) ; 
+        include( "problem/".$h[0]."/statement" ) ; 
         echo '</div>';
+        echo '<div class="feladatAla">' ;
+        echo '<a href=index.php?sub='.$h[0]."> Feltölt </a>";
+        echo '</div>';
+
         continue;
       }
 
-      if("inc"==$val[0] || "prob"==$val[0]){ //include az inc-ből
+      if("inc"==$val[0] ){ //include az inc-ből
         include( $val[1] ) ; 
         continue;
       }

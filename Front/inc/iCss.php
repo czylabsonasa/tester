@@ -1,7 +1,8 @@
 <style type="text/css">
 body{ 
   
-    background-color: BurlyWood; 
+    background-color: Tan;
+    /* BurlyWood;  */
 
     margin-left: 10%; 
     margin-right: 10%; 
@@ -15,5 +16,13 @@ body{
       margin-right: 5%; 
       background-color: Wheat; 
 }
+.feladatAla{
+      padding: 24px 24px 24px 24px; 
+      margin-left: 5%; 
+      margin-right: 5%; 
+      background-color: DarkKhaki ; 
+      /* Peru;  */
+}
+
 
 </style>

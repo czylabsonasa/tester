@@ -1,6 +1,6 @@
 <?php
 
-function cP(){
+function cP(){ //
   include ( "iPassword.php" ) ;
   return ( isset( $_POST[ "user" ] ) && isset( $pwd[ $_POST[ "user" ] ] ) && ( $pwd[ $_POST[ "user" ] ] == $_POST[ "password" ] ) );
 }
@@ -19,14 +19,19 @@ function login(){
   array_push($COLL,array("inc","iLogin.php") ) ;
 }
 
-function cProb($num){
-  $ut="problem/".$num;
-  $f=fopen($ut."/head","r");
+function getHead($num){
+  $f=fopen("problem/".$num."/head","r");
   $h=explode("_",fgets($f,1024));
   fclose($f);
-//print_r($h);
-  return array("rovid"=>$h[1],"hosszu"=>$h[2],"statement"=>$ut."/statement");
+  return $h;
 }
+
+// function cProb($num){
+
+//   $ut="problem/".$num;
+// //print_r($h);
+//   return array("rovid"=>$h[1],"hosszu"=>$h[2],"statement"=>$ut."/statement");
+// }
 
 function cGet(){// collect get params
   global $COLL,$MAGAM,$nevek;
@@ -48,9 +53,9 @@ function cGet(){// collect get params
   }
 
   if(isset($_GET[ "prob" ])){ // feladatok
-    $arr=cProb($_GET[ "prob" ]);
-    $MAGAM.="/feladatok/".$arr["rovid"];
-    array_push( $COLL, array("prob",$arr["statement"]) ) ;
+    $h=getHead($_GET[ "prob" ]);
+    $MAGAM.="/feladatok/".$h[1];
+    array_push( $COLL, array("prob",$h ) ) ;
     return;
   }
 }
