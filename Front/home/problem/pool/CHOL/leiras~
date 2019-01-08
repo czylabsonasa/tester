@@ -1,0 +1,10 @@
+<?php
+echo <<< _L
+nummat/elso<br><hr> 
+<a href=$FeladatKvt/CHOL/leiras.pdf> leiras </a>
+<hr>
+<a href=$FeladatKvt/CHOL/IO.tgz> pÃ©lda bemenet/kimenet </a>
+<br>
+_L;
+?>
+éáá

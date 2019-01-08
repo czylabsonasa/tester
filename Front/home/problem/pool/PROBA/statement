@@ -1,0 +1,7 @@
+<h1 id="összeadás">Összeadás</h1>
+<p>Adott <span class="math inline">\(a,b\in [-1000,1000]\)</span> egészek esetén számold ki <span class="math inline">\(a+b\)</span>-t!</p>
+<h2 id="példa-input">Példa input:</h2>
+<pre><code>1                     
+  2</code></pre>
+<h2 id="példa-output">Példa output:</h2>
+<pre><code>3</code></pre>

@@ -1,0 +1,19 @@
+source base
+#declare -r baseDir="/home/teszt/public_html/Back"
+
+declare -r workDir=${baseDir}"/work"
+
+declare -r ffD=${workDir}"/fromFront"
+
+declare -r tfD=${workDir}"/toFront"
+
+declare -r testD=${baseDir}"/testBed"
+
+declare -r prD=${baseDir}"/problem"
+
+declare -r subD=${baseDir}"/sub"
+
+
+
+#declare -r cpMethod="cp"
+#declare -r targetDir="/home/teszt/public_html/Front/home/work/fromBack"

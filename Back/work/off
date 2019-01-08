@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if test -e pid/${1}
+then
+	kill -9 $(cat pid/${1})
+	rm -f pid/${1}
+fi
+
+exit 0

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+source base
+source def
+
+declare fName
+declare pName
+
+# fromFront Dir
+cd ${ffD}
+
+while true ;
+do
+
+  for fName in $(find . -type f -printf "%f " )
+  do
+    pName=$(echo ${fName} | cut -d'_' -f 4)
+    rm -f ${testD}"/"*
+
+    cp -L ${fName} ${workDir}"/tester" ${prD}"/"${pName}"/checker" ${workDir}"/base" ${workDir}"/def" ${testD}
+
+    cd ${testD}
+    ./tester ${fName}
+
+    cd ${ffD}
+    rm -f ${fName}
+  done
+
+  sleep 2
+
+done

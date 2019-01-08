@@ -1,0 +1,162 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+
+struct PLU
+{
+	const int N ; // max meret
+	const double eps ; // nullaság
+	int n ;
+	double** A ;
+	double* b ;
+	int* p ;
+
+	PLU( int _N , double _eps ) : N( _N ) , eps( _eps )
+	{
+		p = (int*) calloc( N , sizeof(int) );
+		b = (double*) calloc( N , sizeof(double) );
+		A = (double**) calloc(N, sizeof(double*));
+    for ( int i = 0; i < N ; i++ )
+			A[i] = (double*) calloc(N, sizeof (double));
+	}
+	~PLU()
+	{
+		free( p ) ;
+		free( b ) ;
+		for(int i = 0; i < N ; i++ )
+			free( A[i] ) ;
+		free( A ) ;
+	}
+	void Olvas( int _n )
+	{
+		n = _n ;
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<n;j++)
+				scanf("%lf",&A[i][j]);
+		}
+	}
+	
+	double** Felbont()
+	{
+		for(int i=0;i<n;i++)
+			p[i]=i;
+		double max ;
+		for(int k=0;k<n;k++)
+		{
+			/*az aktualis oszlopban a foelem kivalasztasa*/
+			max=fabs(A[k][k]);
+			int hely=k;
+			for(int j=k+1;j<n;j++)
+			{
+				if(fabs(A[j][k])>max)
+				{
+					max=fabs(A[j][k]);
+					hely=j;
+				}
+			}
+			
+			if (max<eps)
+			{
+				return 0 ;
+			}
+
+			/*sorcsere A-ban, b-ben, p-ben*/
+			if (hely!=k)
+			{
+				{ double* seg = A[hely]; A[hely]=A[k]; A[k]=seg; }
+				{ int seg = p[hely]; p[hely]=p[k]; p[k]=seg; }
+			}
+
+			/*az eliminacios lepes*/
+			for(int i=k+1;i<n;i++)
+			{
+				double Aik = A[i][k]=A[i][k]/A[k][k];
+				for(int j=k+1;j<n;j++)
+					A[i][j] -= Aik*A[k][j];
+			}
+		}
+		return A ;
+	}
+
+	double* Megold( double* _b )
+	{
+		for(int i=0;i<n;i++)
+		{
+			b[i] = _b[p[i]] ;
+//			b[p[i]] = _b[i] ;
+		}
+		
+		/*az L*y=b megoldasa, y-nal felulirom b-t*/
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<i;j++)
+				b[i]-= A[i][j]*b[j];
+		}
+
+		/*az U*x=y(=b) megoldasa, x-szel felulirom b-t*/
+		for(int i=n-1;i>=0;i--)
+		{
+			for(int j=i+1;j<n;j++)
+				b[i] -= A[i][j]*b[j];
+			b[i] /= A[i][i];
+		}
+
+		return b ;
+	}
+
+} ;
+
+int main()
+{ 
+	const int N = 111 ; // ettől úgysem lesz nagyobb...
+	double* b = (double*) calloc( N , sizeof(double) );
+	PLU plu( N , double( 1e-14 ) ) ; // 1e-16 tul kicsi
+	double** A ;
+	double* x ;
+	const char FS[] = "%.8lf " ;
+
+
+ 
+  while( 1 )
+  {
+		int n ; scanf("%d",&n) ;
+		if( n == 0 )
+			break ;
+
+		plu.Olvas( n ) ;
+	
+		A = plu.Felbont() ;
+		if( A != 0 )
+		{
+			int m ;
+			scanf( "%d" , & m ) ;
+			for( int i = 0 ; i < m ; i ++ )
+			{
+				for( int j = 0 ; j < n ; scanf( "%lf" , &b[ j ++ ] ) ) ;
+				x = plu.Megold( b ) ;
+				for(int j = 0 ; j < n ; j ++ )
+				{
+					printf( FS , x[ j ] );
+				}
+				printf("\n");
+			}
+		}
+		else
+		{
+			printf("szingularis\n");
+			int m ;
+			scanf( "%d" , & m ) ;
+			for( int i = 0 ; i < m ; i ++ )
+			{
+				for( int j = 0 ; j < n ; scanf( "%lf" , &b[ j ++ ] ) ) ;
+			}
+		}
+		
+		//printf( "\n" ) ;
+
+	}
+
+	free( b ) ;
+	return 0;
+}

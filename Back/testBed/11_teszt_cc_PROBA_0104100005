@@ -1,0 +1,29 @@
+#!/bin/bash
+
+declare BASEDIR="/home/teszt/tester"
+declare SOURCES="temp_web"
+declare FILE
+declare PRB
+
+cd $BASEDIR/$SOURCES
+
+while true 
+do
+
+  for FILE in $(find . -type f -printf "%f " )
+  do
+    PRB=$(echo ${FILE} | cut -d'_' -f 4)
+    cd ../testbed
+    rm -f ./*
+
+    cp ../temp_web/${FILE} ../etc/${PRB}/IN ../etc/${PRB}/sol.out ../bin/tester ../etc/${PRB}/checker .
+
+    ./tester $FILE
+
+    cd ../$SOURCES
+		rm -f $FILE
+  done
+
+  sleep 3
+
+done

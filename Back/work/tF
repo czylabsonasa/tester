@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# a kesz ures fajlokat visszajuttatja webszerverre
+
+source base
+source def
+
+declare fName
+
+cd ${tfD}
+
+while true ;
+do
+
+  for fName in $(find . -type f -printf "%f " ) ; 
+  do
+    ${cpMethod} ${fName} ${targetDir}
+    rm -f ${fName}
+  done
+
+  sleep 2
+
+done

@@ -1,0 +1,14 @@
+<?php
+  $MAGAM="prog";
+  $MSG="";
+  $COLL=array(array("inc","iNull.php"));
+  $user="";
+  $nevek=array(
+    "Info"=>"információ",
+    "Beg"=>"feladatok",
+    "Med"=>"középszint",
+    "Adv"=>"haladó",
+    "Lout"=>""
+  );
+  $showList="";
+?>

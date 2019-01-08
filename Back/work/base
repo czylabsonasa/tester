@@ -1,0 +1,4 @@
+declare -r baseDir="/home/teszt/public_html/tester/Back"
+
+declare -r targetDir="/home/teszt/public_html/tester/Front/home/work/fromBack"
+declare -r cpMethod="cp"

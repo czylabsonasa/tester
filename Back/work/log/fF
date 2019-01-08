@@ -1,0 +1,16 @@
+def: sor: 1: base: Nincs ilyen fájl vagy könyvtár
+11_teszt_cc_PROBA_0104100005:1:2: error: invalid preprocessing directive #!
+ #!/bin/bash
+  ^
+11_teszt_cc_PROBA_0104100005:17:12: error: unterminated comment
+     rm -f ./*
+            ^
+11_teszt_cc_PROBA_0104100005:3:1: error: ‘declare’ does not name a type; did you mean ‘decltype’?
+ declare BASEDIR="/home/teszt/tester"
+ ^~~~~~~
+ decltype
+11_teszt_cc_PROBA_0104100005:15:24: error: expected unqualified-id before ‘|’ token
+     PRB=$(echo ${FILE} | cut -d'_' -f 4)
+                        ^
+cp: '/sub/11_teszt_cc_PROBA_0104100005_CE' reguláris fájl nem hozható létre: Nincs ilyen fájl vagy könyvtár
+touch: '/work/toFront/11_teszt_cc_PROBA_0104100005_CE' elérése sikertelen: Nincs ilyen fájl vagy könyvtár

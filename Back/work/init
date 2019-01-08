@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source def
+
+rm -f log/*
+
+rm -f ${tfD}/*
+rm -f ${ffD}/*
+
+
+echo "0" > ${prD}"/count"
+> ${prD}"/sub"

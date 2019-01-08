@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# atkuldi a feltoltott "oda" ahova kell
+
+source base
+source def
+
+cd ${tbD}
+
+declare fName
+
+while true ; do
+
+  for fName in $(find . -type f -printf "%f " ) ; 
+  do
+    ${cpMethod} ${fName} ${targetDir}/${fName}_$(date +%m%d%H%M%S)
+    if [ $? = 0 ] ; 
+    then
+      rm -f ${fName} 
+    fi
+  done
+  sleep 2
+
+done

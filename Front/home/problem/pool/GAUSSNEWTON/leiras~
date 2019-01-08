@@ -1,0 +1,11 @@
+<php>
+2009/10/1/nummat/harmadik<br>
+09.12.03-ig még lehet feltölteni, innen <b>nem</b> kerül át 
+automatikusan Baran tanárnőhöz !
+echo <<< _L
+<br>
+<hr>
+<a href=$FeladatKvt/GAUSSNEWTON/leiras.pdf> leiras </a>
+<hr>
+<a href=$FeladatKvt/GAUSSNEWTON/IO.tgz> Példa bemenet/kimenet </a>
+<br>

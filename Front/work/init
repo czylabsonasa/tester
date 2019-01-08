@@ -1,0 +1,13 @@
+#!/bin/bash
+
+source def
+
+rm -f log/*
+rm -f pid/*
+
+
+rm -f ${tbD}"/"*
+rm -f ${fbD}"/"*
+
+echo "0" > ${cntFile}
+> ${subList}
