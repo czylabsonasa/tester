@@ -1,7 +1,7 @@
 <style type="text/css">
 body{ 
   
-    background-color: Silver; 
+    background-color: BurlyWood; 
 
     margin-left: 10%; 
     margin-right: 10%; 

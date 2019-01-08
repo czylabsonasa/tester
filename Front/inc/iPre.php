@@ -8,5 +8,5 @@
     "Beg"=>"feladatok",
     "Lout"=>""
   );
-  $showList="";
+  $listFile="";
 ?>

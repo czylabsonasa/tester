@@ -1,20 +1,19 @@
 <?php
+
+function cP(){
+  include ( "iPassword.php" ) ;
+  return ( isset( $_POST[ "user" ] ) && isset( $pwd[ $_POST[ "user" ] ] ) && ( $pwd[ $_POST[ "user" ] ] == $_POST[ "password" ] ) );
+}
+
 function login(){
   global $MAGAM, $MSG, $COLL,$user;
-  
-  include ( "iPassword.php" ) ;
-//  print_r($pwd);
-  if( isset( $_POST[ "user" ] ) && isset( $pwd[ $_POST[ "user" ] ] ) ){
-    //mraron solution, (dont resend the login datas with back problem)
-    //header("location: index.php");
-    if( $pwd[ $_POST[ "user" ] ] == $_POST[ "password" ] ){
-      $_SESSION[ "user" ] = $_POST[ "user" ] ;
-      $user=$_SESSION[ "user" ];
-      array_push($COLL,array("inc","iMenu.php")) ;
-      //mraron solution:
-      header("location: index.php");
-      return;
-    }
+  if(true==cP()){
+    $_SESSION[ "user" ] = $_POST[ "user" ] ;
+    $user=$_SESSION[ "user" ];
+    array_push($COLL,array("inc","iMenu.php")) ;
+    //mraron solution (dont resend the login datas with "browser back" problem)
+    header("location: index.php");
+    return;
   }
   $MAGAM .= "/belépés"; 
   array_push($COLL,array("inc","iLogin.php") ) ;
@@ -22,10 +21,11 @@ function login(){
 
 function cProb($num){
   $ut="problem/".$num;
-  $f=fopen($ut."/title","r");
-  $tit=explode("_",fgets($f,1024));
+  $f=fopen($ut."/head","r");
+  $h=explode("_",fgets($f,1024));
   fclose($f);
-  return array("rovid"=>$tit[0],"hosszu"=>$tit[1],"st"=>$ut."/statement");
+//print_r($h);
+  return array("rovid"=>$h[1],"hosszu"=>$h[2],"statement"=>$ut."/statement");
 }
 
 function cGet(){// collect get params
@@ -39,18 +39,18 @@ function cGet(){// collect get params
     return;
   }
 
-  if(isset($_GET[ "list" ])){ // ezeket kell listazni tablazat formaban
-    $elem=$_GET[ "list" ];
+  if(isset($_GET[ "probList" ])){ // ezeket kell listazni tablazat formaban
+    $elem=$_GET[ "probList" ];
     $MAGAM.="/".$nevek[$elem];
-    $w="problem/cat/".$elem."/list";
-    array_push( $COLL, array("list",$w) ) ;
+    $w="problem/view/".$elem."/list";
+    array_push( $COLL, array("probList",$w) ) ;
     return;
   }
 
   if(isset($_GET[ "prob" ])){ // feladatok
     $arr=cProb($_GET[ "prob" ]);
     $MAGAM.="/feladatok/".$arr["rovid"];
-    array_push( $COLL, array("prob",$arr["st"]) ) ;
+    array_push( $COLL, array("prob",$arr["statement"]) ) ;
     return;
   }
 }
