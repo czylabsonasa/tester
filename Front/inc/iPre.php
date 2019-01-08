@@ -6,8 +6,6 @@
   $nevek=array(
     "Info"=>"információ",
     "Beg"=>"feladatok",
-    "Med"=>"középszint",
-    "Adv"=>"haladó",
     "Lout"=>""
   );
   $showList="";

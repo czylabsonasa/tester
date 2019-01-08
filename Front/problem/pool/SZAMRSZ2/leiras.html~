@@ -1,0 +1,21 @@
+Határozd meg egy <b>a</b> számrendszerben adott <b>b</b> szám 2,3,..9,10 szerinti 
+maradékait. <b>a</b> [2,10]-beli, <b>b</b> jegyeinek száma legfeljebb 1000.
+A feldolgozandó esetek <b>N</b> száma a bemenet első helyén áll, melyet 
+<b>N</b> db <b>a</b> <b>b</b> pár követ.
+<br>
+<hr>
+<b>Példa bemenet:</b><br>
+5<br>
+2 1<br>
+10 2<br>
+2 10000<br>
+10 100000000000000000000000000000000000<br>
+10 100000000000000000000000000000000001<br>
+<hr>
+<b>Példa kimenet:</b><br>
+111111111<br>
+022222222<br>
+010142076<br>
+010045010<br>
+121156121<br>
+<hr>

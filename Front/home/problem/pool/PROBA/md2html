@@ -1,1 +1,0 @@
-pandoc  -t html5 statement.md -o statement --mathjax

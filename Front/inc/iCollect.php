@@ -24,7 +24,7 @@
         include( $val[1] ) ; 
         continue;
       }
-      if("list"==$val[0]){ //ez feladatlistákat hoz be
+      if("view"==$val[0]){ //ez feladatlistákat hoz be
         $showList=$val[1];
         include("iList.php");
         continue;

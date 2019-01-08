@@ -21,7 +21,7 @@ function login(){
 }
 
 function cProb($num){
-  $ut="home/problem/".$num;
+  $ut="problem/".$num;
   $f=fopen($ut."/title","r");
   $tit=explode("_",fgets($f,1024));
   fclose($f);
@@ -42,7 +42,7 @@ function cGet(){// collect get params
   if(isset($_GET[ "list" ])){ // ezeket kell listazni tablazat formaban
     $elem=$_GET[ "list" ];
     $MAGAM.="/".$nevek[$elem];
-    $w="home/cat/".$elem."/list";
+    $w="problem/cat/".$elem."/list";
     array_push( $COLL, array("list",$w) ) ;
     return;
   }

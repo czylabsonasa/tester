@@ -1,12 +1,5 @@
 <?php 
-	print "<table border=0>" ;
-echo <<< _TXT
-<tr>
-<td><tab>          </tab></td>
-<td><tab>          </tab</td>
-</tr>
-_TXT;
-  
+  print "<table border=0>" ;
   $f=fopen( $showList , "r" ) ;
   while( $line = fgets( $f ) )
   {
