@@ -2,4 +2,4 @@
 
 cat pre.md | awk -f ~/bin/pre.awk > statement.md
 
-pandoc  -t html4 statement.md -o statement --katex
+pandoc  -t html4 statement.md -o statement --mathjax

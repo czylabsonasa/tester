@@ -9,4 +9,5 @@
     "Lout"=>""
   );
   $listFile="";
+  $SRC_MAX_SIZE=32768;
 ?>
