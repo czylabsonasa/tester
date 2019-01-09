@@ -1,16 +1,7 @@
 <?php
-echo<<<FORM
+echo<<<_HD
   <div>
-    <br>
-    <b> Az output lebegőpontos számait 8 (nyolc) tizedes jegy pontossággal irjátok ki. </b>
-    <br>
-    Fokozottan ügyeljetek lebegőpontos számok <b> egyenlőségének </b> vizsgálatára!!!
-    <br>
-    ( a == b helyett |a - b| < valami ami eleg kicsi...)
-    <br>
-    <br>
-    <hr>
-    A  következő nyelveken lehet beadni a feladatokat: 
+    A  következő nyelveken lehet feltölteni a feladatokat: 
     <ul>
       <li> c </li>
       <li> c++ </li>
@@ -34,6 +25,6 @@ echo<<<FORM
     </ul>
     </p>
   </div>
-FORM;
+_HD;
 
 ?>

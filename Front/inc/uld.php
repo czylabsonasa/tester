@@ -1,17 +1,13 @@
 <?php
-	if( $_FILES[ "source" ][ "size" ] > 0 ) 
-	{
-		if( $_FILES[ "source" ][ "size" ] > $SRC_MAX_SIZE )
-		{
-      echo "Hiba. A forrás nem lehet nagyobb mint $SRC_MAX_SIZE bájt" ;
+	if( $_FILES[ "source" ][ "size" ] > 0 ) {
+		if( $_FILES[ "source" ][ "size" ] > $gSrcMaxSize){
+      echo "Hiba. A forrás nem lehet nagyobb mint $gSrcMaxSize bájt" ;
       exit( 1 ) ;
 		}
 
-    while( true )
-    {
+    while( true ) {
       $f_cntr = fopen( 'cntr' , 'r+' ) ;
-      if( flock( $f_cntr , LOCK_EX ) == true )
-      {
+      if( flock( $f_cntr , LOCK_EX ) == true ) {
         $cntr = ( int ) fread( $f_cntr , 42 ) ;
         $cntr += 1 ;
         fseek( $f_cntr , 0 ) ;
@@ -27,25 +23,7 @@
     $cntr = $cntr."_".$_SESSION[ "user" ]."_".$_POST[ 'lang' ]."_".$FELADAT ;
     chmod( $_FILES[ 'source' ][ 'tmp_name' ] , 0666 ) ;
  		move_uploaded_file( $_FILES[ 'source' ][ 'tmp_name' ] , 'temp_web/'.$cntr ) ;    
-	}
-	else
-	{
-    $f_num = fopen( 'inc/id_num_inc.php' , 'r' ) ;
-    $OK = 1 ;
-    while( $line = fgets( $f_num ) )
-    {
-      $words=explode( '_' , $line ) ;
-      if( $words[ 0 ] == $_SESSION[ "user" ] ) 
-      {
-        if( (integer)$words[ 1 ] < 1 )
-        {
-          $OK = 0 ;
-        }
-        break ;
-      } 
-    }
-  if( $OK )
-  {
+	}else{
 echo <<< FORM
 	<form enctype="multipart/form-data" action="$_SERVER[PHP_SELF]" method="post">
   	Forrás:
@@ -61,9 +39,5 @@ echo <<< FORM
     <input type="hidden" name="problem" value="$FELADAT"> </input>
   </form>
 FORM;
-  }
-  else
-    echo "Nincs több lehetőség." ;
-    
   }
 ?>

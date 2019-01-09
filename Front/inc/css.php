@@ -16,13 +16,22 @@ body{
       margin-right: 5%; 
       background-color: Wheat; 
 }
-.feladatAla{
+.feladatA{
       padding: 24px 24px 24px 24px; 
       margin-left: 5%; 
       margin-right: 5%; 
       background-color: DarkKhaki ; 
       /* Peru;  */
 }
+
+.feladatB{
+      padding: 24px 24px 24px 24px; 
+      margin-left: 5%; 
+      margin-right: 5%; 
+      background-color: Peru ; 
+      /* Peru;  */
+}
+
 
 
 </style>

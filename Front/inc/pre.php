@@ -1,0 +1,13 @@
+<?php
+  $gMagam="prog";
+  $gMsg="";
+  $gColl=array(array("inc","null.php"));
+  $gUser="";
+  $gNevek=array(
+    "info"=>"információ",
+    "beg"=>"feladatok",
+    "lout"=>""
+  );
+  $listFile="";
+  $gSrcMaxSize=32768;
+?>
