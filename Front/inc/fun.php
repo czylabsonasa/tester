@@ -39,8 +39,7 @@ function collectGets(){// collect get params
   if(isset($_GET[ "inc" ])){ // ezek fájlok az inc-ben
     $elem=$_GET[ "inc" ];
     $gMagam.="/".$gNevek[$elem];
-    $w=$elem.".php";
-    array_push( $gColl, array("inc",$w ) ) ;
+    array_push( $gColl, array("inc",$elem.".php" ) ) ;
     return;
   }
 
@@ -61,7 +60,12 @@ function collectGets(){// collect get params
       $gMagam.="/feltöltés";
       array_push( $gColl, array("sub",$elem ) ) ;
     }
-  
+    if(isset($_GET[ "res" ])){ // feltöltés
+      $gMagam.="/eredmények";
+      array_push( $gColl, array("res",$elem ) ) ;
+    }
+
+    
     return;
   }
 

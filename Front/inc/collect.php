@@ -26,6 +26,7 @@
         echo '</div>';
         echo '<div class="feladatA">' ;
         echo '<a href=index.php?prob='.$val[1].'&sub> Feltölt </a>';
+        echo '<a href=index.php?prob='.$val[1].'&res> Eredmények </a>';        
         echo '</div>';
 
         continue;
@@ -46,6 +47,14 @@
         echo '</div>';
         continue;
       }
+      if("res"==$val[0]){ //eredmények
+        echo '<div class="feladatB">' ;
+        echo result($val[1]) ;
+        echo '</div>';
+        continue;
+      }
+
+
     }
     ?>
     <?php include( "footer.php" ) ; ?>
