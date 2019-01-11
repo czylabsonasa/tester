@@ -71,6 +71,12 @@ function collectGets(){// collect get params
 
 }
 
+function userData($name){
+  $f=fopen("user/pool/".$name."/list","r");
+  $h=explode("_",fgets($f,1024));
+  fclose($f);
+  return $h;
+}
 
 function upload($prob){
   global $gUser, $gSrcMaxSize;
@@ -94,7 +100,8 @@ function upload($prob){
     }
     
 
-    $sName = $count."_".$gUser."_".$_POST[ 'lang' ]."_".$prob ;
+
+    $sName = $count."_".gUserData["uid"]."_".$_POST[ 'lang' ]."_".$prob ;
     chmod( $_FILES[ 'source' ][ 'tmp_name' ] , 0666 ) ; // tmp_name nevu file jon letre feltolteskor
 //echo $_FILES[ 'source' ][ 'tmp_name' ] ;    
     move_uploaded_file( $_FILES[ 'source' ][ 'tmp_name' ] , 'work/toBack/'.$sName ) ;    
