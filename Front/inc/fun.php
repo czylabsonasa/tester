@@ -147,7 +147,7 @@ _HD;
 
 
 
-function cRes($spec=false){ // collect res file
+function result($ut){ // collect res file
   $ret="<table border=1>" ;
   $ret.="\n<tr>" ;
   $words = array('Sorszám' , 'Nyelv' , 'Érkezés' , 'Eredmény' ) ;

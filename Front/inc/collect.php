@@ -25,8 +25,8 @@
         include( "problem/".$val[1]."/statement" ) ; 
         echo '</div>';
         echo '<div class="feladatA">' ;
-        echo '<a href=index.php?prob='.$val[1].'&sub> Feltölt </a>';
-        echo '<a href=index.php?prob='.$val[1].'&res> Eredmények </a>';        
+        echo '<a href=index.php?prob='.$val[1].'&sub> feltöltés </a>';
+        echo '<a href=index.php?prob='.$val[1].'&res> eredmények </a>';        
         echo '</div>';
 
         continue;
