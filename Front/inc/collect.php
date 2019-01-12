@@ -3,7 +3,7 @@
 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title> <?php echo  $gUser."@".$gMagam; ?> </title>
+    <title> <?php echo  $gUname."@".$gMagam; ?> </title>
     <?php include( "css.php" ) ; ?>
   </head>
 
@@ -14,7 +14,7 @@
 
   <?php if(isset($_SESSION["user"])) echo '<h2 style="text-align:right"> <a href="index.php?inc=lout">Kilépés</a> </h2>' ?>
 
-    <h1><?php echo $gUser."@".$gMagam; ?> </h1>
+    <h1><?php echo $gUname."@".$gMagam; ?> </h1>
 
     <?php echo $gMsg ; ?>
     <?php 
@@ -36,8 +36,8 @@
         include( $val[1] ) ; 
         continue;
       }
-      if("probList"==$val[0]){ //ez feladatlistákat hoz be
-        echo probList($val[1]) ;
+      if("view"==$val[0]){ //ez feladatlistákat hoz be
+        echo view2table($val[1]) ;
         continue;
       }
 

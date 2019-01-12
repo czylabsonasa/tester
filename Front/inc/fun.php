@@ -2,14 +2,13 @@
 
 function checkPwd(){ // check pwd
   include ( "password.php" ) ;
-  return ( isset( $_POST[ "uName" ] ) && isset( $pwd[ $_POST[ "uName" ] ] ) && ( $pwd[ $_POST[ "uName" ] ] == $_POST[ "password" ] ) );
+  return ( isset( $_POST[ "uname" ] ) && isset( $pwd[ $_POST[ "uname" ] ] ) && ( $pwd[ $_POST[ "uname" ] ] == $_POST[ "password" ] ) );
 }
 
 function login(){
-  global $gMagam, $gMsg, $gColl,$gUser;
+  global $gMagam, $gMsg, $gColl;
   if(true==checkPwd()){
-    $_SESSION[ "uName" ] = $_POST[ "uName" ] ;
-    $gUser=$_SESSION[ "uName" ];
+    $_SESSION[ "uname" ] = $_POST[ "uname" ] ;
     array_push($gColl,array("inc","menu.php")) ;
     //mraron solution (dont resend the login datas with "browser back" problem)
     header("location: index.php");
@@ -44,11 +43,11 @@ function collectGets(){// collect get params
     return;
   }
 
-  if(isset($_GET[ "probList" ])){ // ezeket kell listazni tablazat formaban
-    $elem=$_GET[ "probList" ];
+  if(isset($_GET[ "view" ])){ // ezeket kell listazni tablazat formaban
+    $elem=$_GET[ "view" ];
     $gMagam.="/".$gNevek[$elem];
-    $w="problem/view/".$elem."/list";
-    array_push( $gColl, array("probList",$w) ) ;
+    $w="problem/view/".$elem;
+    array_push( $gColl, array("view",$w) ) ;
     return;
   }
 
@@ -80,7 +79,7 @@ function collectGets(){// collect get params
 // }
 
 function upload($prob){
-  global $gUser, $gSrcMaxSize;
+  global $gUname, $gSrcMaxSize;
 	if( $_FILES[ "source" ][ "size" ] > 0 ) {
 
     if( $_FILES[ "source" ][ "size" ] > $gSrcMaxSize ){
@@ -102,10 +101,10 @@ function upload($prob){
     
 
 
-    $sName = $count."_".gUserData["uid"]."_".$_POST[ 'lang' ]."_".$prob ;
+    $subName = $count."_".$gUname."_".$prob."_".$_POST[ 'lang' ] ;
     chmod( $_FILES[ 'source' ][ 'tmp_name' ] , 0666 ) ; // tmp_name nevu file jon letre feltolteskor
 //echo $_FILES[ 'source' ][ 'tmp_name' ] ;    
-    move_uploaded_file( $_FILES[ 'source' ][ 'tmp_name' ] , 'work/toBack/'.$sName ) ;    
+    move_uploaded_file( $_FILES[ 'source' ][ 'tmp_name' ] , 'work/toBack/'.$subName ) ;    
 //    header("location: index.php?prob=".$prob);
 
     return "<b>Ok. A forrás továbbítva ($count)</b>" ;
@@ -131,9 +130,14 @@ FORM;
 }
 
 
-function probList($listFile){
-  $f=fopen( $listFile , "r" ) ;
+function view2table($ut){ // problem list-eknél
   $ret= "<table border=0>" ;
+  $f=fopen( $ut."/head" , "r" ) ;
+  $ret.=arr2row(explode(fgets($f)));
+  fclose($f);
+
+  $f=fopen( $ut."/list" , "r" ) ;
+
   while( $line = fgets( $f ) ) {
     $tok=explode( '_' , $line ) ;
 $ret.= <<< _HD
@@ -162,7 +166,7 @@ function arr2row($arr){
 }
 
 
-function list2table($ut){ // collect res file
+function list2table($ut){ // pl sub/list-nél
   $ret="<table border=1>\n" ;
   
   $f=fopen($ut."/head","r");

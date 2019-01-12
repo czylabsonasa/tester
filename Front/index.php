@@ -5,9 +5,8 @@
   include("pre.php");
   include("fun.php");
 
-  if(isset($_SESSION["user"])){
-      $gUser=$_SESSION["user"] ;
-      $gUid=
+  if(isset($_SESSION["uname"])){
+      $gUname=$_SESSION["uname"] ;
       array_push($gColl, array("inc","menu.php" ));
       collectGets();
   }else{

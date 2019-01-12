@@ -1,0 +1,60 @@
+import strutils as str 
+
+type tknzr = object
+  tar : string
+  pos,len : int
+
+proc init(t: var tknzr, f:File) = 
+  t.tar=readAll(f)
+  t.len=len(t.tar)
+  t.pos=(-1)
+
+proc next(t: var tknzr) : string =
+  result=""
+  if t.pos<t.len:
+    var lft=t.pos+1
+    while lft<t.len and isSpaceAscii(t.tar[lft]):
+      lft+=1
+    var rgt=lft+1
+    while rgt<t.len and not isSpaceAscii(t.tar[rgt]):
+      rgt+=1
+    if lft<t.len:
+      result=t.tar[lft..rgt-1]
+    t.pos=rgt
+
+
+
+var 
+  tok : tknzr
+  nx,ny,ix,iy:int
+  x,y:seq[int]
+  freq : array[-128..128,bool]
+
+tok.init(stdin)
+
+
+nx=parseInt(next(tok))
+newSeq(x,nx)
+for i in 0..(nx-1):
+  x[i]=parseInt(next(tok))
+
+ny=parseInt(next(tok))
+newSeq(y,ny)
+for i in 0..(ny-1):
+  y[i]=parseInt(next(tok))
+
+
+for i in 0..(nx-1):
+  freq[x[i]]=true
+
+for i in 0..(ny-1):
+  freq[y[i]]=false
+  
+var volt:bool=false
+for i in 0..(nx-1):
+  if freq[x[i]]:
+    if volt: write(stdout," ")
+    volt=true
+    write(stdout,$x[i])
+write(stdout,"\n")
+  

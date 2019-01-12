@@ -13,6 +13,7 @@ while true ; do
 
   for fName in $(find . -type f -printf "%f " ) ; 
   do
+# count uname problem lang    
     ${cpMethod} ${fName} ${targetDir}/${fName}_$(date +%m%d%H%M%S)
     if [ $? = 0 ] ; 
     then

@@ -2,7 +2,8 @@
   $gMagam="prog";
   $gMsg="";
   $gColl=array(array("inc","null.php"));
-  $gUser="";
+  $gUname="";
+  $gUid=-1;
   $gNevek=array(
     "info"=>"információ",
     "beg"=>"feladatok",
