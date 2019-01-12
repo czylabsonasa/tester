@@ -12,7 +12,7 @@
 
   <body>
 
-  <?php if(isset($_SESSION["user"])) echo '<h2 style="text-align:right"> <a href="index.php?inc=lout">Kilépés</a> </h2>' ?>
+  <?php if(isset($_SESSION["uname"])) echo '<h2 style="text-align:right"> <a href="index.php?inc=lout">Kilépés</a> </h2>' ?>
 
     <h1><?php echo $gUname."@".$gMagam; ?> </h1>
 

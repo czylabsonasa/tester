@@ -1,9 +1,9 @@
-source base
+
 declare -r workDir=${baseDir}"/work"
 declare -r tbD=${workDir}"/toBack"
 declare -r fbD=${workDir}"/fromBack"
-declare -r subList=${baseDir}"/sub"
+declare -r subList=${baseDir}"/sub/list"
 declare -r cntFile=${baseDir}"/count"
 
 #declare -r cpMethod="cp"
-#declare -r targetDir="/home/teszt/public_html/tester/Back/work/fromFront"
+#declare -r targetDir="/home/nosy/public_html/tester/Back/work/fromFront"

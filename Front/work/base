@@ -1,8 +1,5 @@
-# declare -r baseDir="/home/teszt/public_html/tester/Front"
 declare -r baseDir="/home/nosy/public_html/tester/Front"
 
-
-# declare -r targetDir="/home/teszt/public_html/tester/Back/work/fromFront"
 declare -r targetDir="/home/nosy/public_html/tester/Back/work/fromFront"
 
 declare -r cpMethod="cp"
