@@ -2,14 +2,14 @@
 
 function checkPwd(){ // check pwd
   include ( "password.php" ) ;
-  return ( isset( $_POST[ "user" ] ) && isset( $pwd[ $_POST[ "user" ] ] ) && ( $pwd[ $_POST[ "user" ] ] == $_POST[ "password" ] ) );
+  return ( isset( $_POST[ "uName" ] ) && isset( $pwd[ $_POST[ "uName" ] ] ) && ( $pwd[ $_POST[ "uName" ] ] == $_POST[ "password" ] ) );
 }
 
 function login(){
   global $gMagam, $gMsg, $gColl,$gUser;
   if(true==checkPwd()){
-    $_SESSION[ "user" ] = $_POST[ "user" ] ;
-    $gUser=$_SESSION[ "user" ];
+    $_SESSION[ "uName" ] = $_POST[ "uName" ] ;
+    $gUser=$_SESSION[ "uName" ];
     array_push($gColl,array("inc","menu.php")) ;
     //mraron solution (dont resend the login datas with "browser back" problem)
     header("location: index.php");
@@ -19,12 +19,13 @@ function login(){
   array_push($gColl,array("inc","login.php") ) ;
 }
 
-function getHead($num){
-  $f=fopen("problem/".$num."/head","r");
-  $h=explode("_",fgets($f,1024));
+function getHead($ut){
+  $f=fopen($ut."/head","r");
+  $h=explode("_",fgets($f));
   fclose($f);
   return $h;
 }
+
 
 // function cProb($num){
 
@@ -53,7 +54,7 @@ function collectGets(){// collect get params
 
   if(isset($_GET[ "prob" ])){ // feladatok
     $elem=$_GET[ "prob" ]; // ez a száma
-    $h=getHead($elem);
+    $h=getHead("problem/".$elem);
     $gMagam.="/feladatok/".$h[1];
     array_push( $gColl, array("prob",$elem ) ) ;
     if(isset($_GET[ "sub" ])){ // feltöltés
@@ -71,12 +72,12 @@ function collectGets(){// collect get params
 
 }
 
-function userData($name){
-  $f=fopen("user/pool/".$name."/list","r");
-  $h=explode("_",fgets($f,1024));
-  fclose($f);
-  return $h;
-}
+// function userData($name){
+//   $f=fopen("user/pool/".$name."/list","r");
+//   $h=explode("_",fgets($f,1024));
+//   fclose($f);
+//   return $h;
+// }
 
 function upload($prob){
   global $gUser, $gSrcMaxSize;
@@ -151,42 +152,35 @@ _HD;
 
 
 
-
-
-
-function result($ut){ // collect res file
-  $ret="<table border=1>" ;
-  $ret.="\n<tr>" ;
-  $words = array('Sorszám' , 'Nyelv' , 'Érkezés' , 'Eredmény' ) ;
-  if(true==$spec){
-    $words = array('Sorszám' , 'User','Nyelv' , 'Érkezés' , 'Eredmény' ) ;
+function arr2row($arr){
+  $ret="<tr> " ;
+  foreach( $arr as $d ){
+    $ret.=" <td>".$d."</td> " ;
   }
-  foreach( $words as $d )
-  {
-    $ret.="<td>".$d."</td>" ;
-  }
-  $ret.="</tr>\n" ;
+  $ret.=" </tr>\n" ;
+  return $ret;
+}
+
+
+function list2table($ut){ // collect res file
+  $ret="<table border=1>\n" ;
+  
+  $f=fopen($ut."/head","r");
+  $ret.=arr2row(explode("_",fgets($f)));
+  fclose($f);
+
   
 // tobbi            
-  $f_res=fopen( "./res" , "r" ) ;
-  while( $line = fgets( $f_res ) )
-  {
-    $words=explode( '_' , $line ) ;
-//        array_splice( $words , 6 ) ;
-    unset( $words[ 3 ] ) ; // ez a feladat
-    if(true==$spec || $words[ 1 ]==$_SESSION[ "user" ] )
-    {
-      if(true != $spec ){ unset( $words[ 1 ] ) ; }
-      $ret.="<tr>" ;
-      foreach( $words as $d )
-      {
-        $ret.="<td>".$d."</td>" ;
-      }
-      $ret.="</tr>\n" ;
+  $f=fopen($ut."/list","r");
+  while( true ) {
+    $words=explode("_",fgets($f));
+    if(empty($words)){
+      break;
     }
+    $ret.=arr2row($words);
   }
   $ret.="</table>\n" ;
-
+  fclose($f);
   return $ret ;
 }  
 

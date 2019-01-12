@@ -1,0 +1,3 @@
+base: 2. sor: declare: baseDir: csak olvasható változó
+base: 6. sor: declare: targetDir: csak olvasható változó
+base: 8. sor: declare: cpMethod: csak olvasható változó
