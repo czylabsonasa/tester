@@ -6,8 +6,6 @@ source base
 source def
 
 declare fName
-#declare Nev
-#declare Feladat
 declare tSub
 
 cd ${fromBack}

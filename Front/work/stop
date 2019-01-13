@@ -1,3 +1,9 @@
-./off tB
-./off fB
+#!/bin/bash
+
+source base
+source def
+
+off toBackX
+off fromBackX
+
 
