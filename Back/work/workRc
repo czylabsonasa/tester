@@ -1,0 +1,44 @@
+declare -r base="/home/teszt/public_html/tester/Back"
+declare -r work=${base}"/work"
+
+declare -r target="/home/teszt/public_html/tester/Front/work/fromBack"
+declare -r cpMethod="cp"
+
+declare tarF subId probId userId langName
+
+function off {
+  if test -e pid/${1}
+  then
+  	kill -9 $(cat pid/${1})
+  	rm -f pid/${1}
+  fi
+}
+
+
+function on {
+  if ! test -e pid/${1}
+  then
+  	rm -f log/${1}
+  	touch log/${1}
+  	nohup ./${1} 1>> log/${1} 2>&1 &
+	  echo "$!" > pid/${1}
+  fi
+}
+
+
+function preTester {
+    rm -f "testBed/"*
+    mv ${tarF} testBed
+    cd testBed
+    subId=$(echo ${tarF}|cut -d'_' -f1)
+    tar xf ${tarF}
+    source ${subId}"_data"
+    cp -RL ${base}"/problem/}"${pId}"/io" ${base}"/problem/}"${pId}"/checker" .
+}
+
+function 
+
+function postTester {
+  
+}
+

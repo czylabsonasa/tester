@@ -1,2 +1,6 @@
-./off tF
-./off fF
+#!/bin/bash
+
+source workRc
+
+# off toFrontX
+off fromFrontX

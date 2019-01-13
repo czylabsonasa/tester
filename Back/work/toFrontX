@@ -7,17 +7,14 @@ source def
 
 declare fName
 
-cd ${tfD}
+cd ${work}"/toFront"
 
 while true ;
 do
-
-  for fName in $(find . -type f -printf "%f " ) ; 
+  for fName in $(find "*_res" -type f -printf "%f " ) ; 
   do
     ${cpMethod} ${fName} ${targetDir}
     rm -f ${fName}
   done
-
   sleep 2
-
 done

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source workRc
+
+cd ${work}"/fromFront"
+
+while true
+do
+  for tarF in $(find "*_pre" -type f -printf "%f " )
+  do
+    preTester
+    tester
+    rm -f ${fName}
+  done
+  sleep 2
+done
