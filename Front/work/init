@@ -7,8 +7,9 @@ rm -f log/*
 rm -f pid/*
 
 
-rm -f ${tbD}"/"*
-rm -f ${fbD}"/"*
+rm -f ${toBack}"/"*
+rm -f ${fromBack}"/"*
 
-echo "0" > ${cntFile}
-> ${subList}
+echo "0" > ${sub}"/count"
+> ${sub}"/list"
+

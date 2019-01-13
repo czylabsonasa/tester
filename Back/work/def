@@ -1,12 +1,12 @@
 
-declare -r workDir=${baseDir}"/work"
+declare -r work=${baseDir}"/work"
 
-declare -r ffD=${workDir}"/fromFront"
+declare -r fromFront=${workDir}"/fromFront"
 
-declare -r tfD=${workDir}"/toFront"
+declare -r toFront=${workDir}"/toFront"
 
-declare -r testD=${baseDir}"/testBed"
+declare -r testBed=${baseDir}"/testBed"
 
-declare -r prD=${baseDir}"/problem"
+declare -r problem=${baseDir}"/problem"
 
-declare -r subD=${baseDir}"/sub"
+declare -r sub=${baseDir}"/sub"

@@ -20,9 +20,10 @@ declare resName="_"
 declare -i nIO
 declare -i n
 
+cd ${testBed}
 
 pName=$(echo ${fName} | cut -d'_' -f 4)
-declare -r ioD=${prD}"/"${pName}"/io"
+declare -r io=${problem}"/"${pName}"/io"
 
 lName=$( echo ${fName} | cut -d'_' -f 3)
 
@@ -44,8 +45,8 @@ ${cCmd} ; xCode=$?
 
 if test ${xCode} -gt 0 ; 
 then 
-  cp ${fName} ${subD}"/"${fName}"_CE"
-  touch ${tfD}"/"${fName}"_CE"
+  cp ${fName} ${sub}"/"${fName}"_CE"
+  touch ${toFront}"/"${fName}"_CE"
   exit 1
 fi
 
@@ -53,7 +54,7 @@ fi
 
 ulimit -t ${uTime} -m ${uMem} -v ${uVirt} -n ${uFd} 
 
-nIO=$(ls ${ioD}/in* | wc -w)
+nIO=$(ls ${io}/in* | wc -w)
 for n in $(seq 1 ${nIO});
 do
   ./act < ${ioD}"/in"${n} > ./act.out; xCode=$?
@@ -69,7 +70,7 @@ do
     break
   fi
 
-  ./checker ${ioD}"/out"${n} act.out; xCode=$?
+  ./checker ${io}"/out"${n} act.out; xCode=$?
 
   if test ${xCode} -gt 0 ; then
       resName=${fName}"_WA"
@@ -82,7 +83,7 @@ then
   resName=${fName}"_AC"
 fi
 
-cp ${fName} ${subD}"/"${resName}
-touch ${tfD}"/"${resName}
+cp ${fName} ${sub}"/"${resName}
+touch ${toFront}"/"${resName}
 
 exit 0

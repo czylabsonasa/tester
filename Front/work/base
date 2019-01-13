@@ -1,6 +1,6 @@
-declare -r baseDir="/home/nosy/public_html/tester/Front"
+declare -r base="/home/teszt/public_html/tester/Front"
 
-declare -r targetDir="/home/nosy/public_html/tester/Back/work/fromFront"
+declare -r target="/home/teszt/public_html/tester/Back/work/fromFront"
 
 declare -r cpMethod="cp"
 

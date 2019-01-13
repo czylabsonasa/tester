@@ -10,26 +10,19 @@ declare fName
 #declare Feladat
 declare tSub
 
-cd ${fbD}
+cd ${fromBack}
 
 while true ; do
 
   for fName in $(find . -type f -printf "%f " ) ; 
   do
-
-#		Feladat=$( echo ${_F} | cut -d'_' -f 4 )
-    tSub=${subList}"_"
+    tSub=${sub}"/list_"
 
     echo "${fName}" > ${tSub}
-    cat ${subList} >> ${tSub}
-    mv ${tSub} ${subList}
+    cat ${sub}"/list" >> ${tSub}
+    mv ${tSub} ${sub}"/list"
 
-#		Nev=$(echo ${_F} | cut -d'_' -f 2 )
-#		echo "${_F}" > ${CelKvt}/_eredmeny
-# cat ${CelKvt}/ember/eredmeny >> ${CelKvt}/ember/_eredmeny
-# mv ${CelKvt}/ember/_eredmeny ${CelKvt}/ember/eredmeny
     rm -f ${fName}
-
   done
 
   sleep 2

@@ -93,7 +93,7 @@ function upload($prob){
         $count = ( int ) fread( $f, 42 ) ;
         $count += 1 ;
         fseek( $f, 0 ) ;
-        fwrite( $f , sprintf( "%07d" , $count ) ) ;
+        fwrite( $f , sprintf( "%d" , $count ) ) ;
         fclose( $f ) ;
         break ;
       }

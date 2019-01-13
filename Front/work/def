@@ -1,9 +1,6 @@
 
-declare -r workDir=${baseDir}"/work"
-declare -r tbD=${workDir}"/toBack"
-declare -r fbD=${workDir}"/fromBack"
-declare -r subList=${baseDir}"/sub/list"
-declare -r cntFile=${baseDir}"/count"
+declare -r work=${base}"/work"
+declare -r toBack=${work}"/toBack"
+declare -r fromBack=${work}"/fromBack"
+declare -r sub=${base}"/sub"
 
-#declare -r cpMethod="cp"
-#declare -r targetDir="/home/nosy/public_html/tester/Back/work/fromFront"
