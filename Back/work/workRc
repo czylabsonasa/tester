@@ -61,10 +61,6 @@ function pre {
   return ${xCode}
 }
 
-function post {
-  echo "procEnd="\"$(date)\" >> ${subId}"_res"
-}
-
 function compile {
   cd testBed
   declare compC="_"
@@ -124,4 +120,10 @@ function run {
   done
 
   return ${xCode}
+}
+
+
+function post {
+  echo "procEnd="\"$(date)\" >> ${subId}"_res"
+  cp ${subId}_res ${base}"/sub/res"
 }
