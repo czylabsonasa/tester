@@ -8,15 +8,16 @@ while true
 do
   for tarF in $( find  "fromFront/" -name "*_pre" )
   do
-    preTester
-    compile
-    if [ $? = 0 ]
+    pre
+    if [ ${verdict} = "_" ]
     then
-      echo "compile: ok"
-    else
-      echo "compile: fail"
+      compile
     fi
-#    tester
+    if [ ${verdict} = "_" ]
+    then
+      run
+    fi
+    post
   done
   sleep 2
 done

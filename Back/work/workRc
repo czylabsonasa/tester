@@ -4,7 +4,8 @@ declare -r work=${base}"/work"
 declare -r target="/home/teszt/public_html/tester/Front/work/fromBack"
 declare -r cpMethod="cp"
 
-declare tarF subId problemId userId langName
+declare tarF subId problemId problemName userId userName langName xCode 
+declare verdict="_"
 
 function off {
   if test -e pid/${1}
@@ -26,12 +27,15 @@ function on {
 }
 
 
-function preTester {
+function pre {
+  (
   rm -rf "testBed/"*
   tar -xf ${tarF} -C testBed/
   mv ${tarF} ${base}"/sub/pre"
   cd testBed
   source data
+  cp data ${subId}"_res"
+  echo "procBeg="\"$(date)\" >> ${subId}"_res"
   ln -s ${base}"/problem/"${problemId}"/io"
   if test -e ${base}"/problem/"${problemId}"/checker"
   then
@@ -45,34 +49,30 @@ function preTester {
   else
     cp ${base}"/problem/limit/default/limit" .
   fi
+  )
+  xCode=$?
+  if [ ${xCode} != 0 ]
+  then
+    verdict="IE"
+    echo 'verdict="IE"' >> ${subId}"_res"
+  fi
+
   cd ${work}
+  return ${xCode}
+}
+
+function post {
+  echo "procEnd="\"$(date)\" >> ${subId}"_res"
 }
 
 function compile {
   cd testBed
   declare compC="_"
-  declare -i xCode
-  while true
-  do
-    if [ ${langName} = "c" ]
-    then
-      source ${base}/lang/c/compC
-      break 
-    fi
-
-    if [ ${langName} = "cc" ]
-    then
-      source ${base}/lang/cc/compC
-      break
-    fi
-
-    if [ ${langName} = "pas" ]
-    then
-      source ${base}/lang/pas/compC
-      break
-    fi
-    break
-  done
+  confP=${base}"/lang/"${langName}"/config"
+  if test -e ${confP}
+  then
+    source ${confP}
+  fi
 
   if [ "${compC}" = "_" ]
   then
@@ -80,11 +80,43 @@ function compile {
   else
     (${compC});xCode=$?
   fi
+  if [ ${xCode} != 0 ]
+  then
+    verdict="CE"
+    echo 'verdict="CE"' >> ${subId}"_res"
+  fi
+
   cd ${work}
   return ${xCode}
 }
 
-function postTester {
+function run {
+  nIO=$(ls ${io}/in* | wc -w)
+  for n in $(seq 1 ${nIO});
+  do
+    (./actX < ${ioD}"/in"${n} > out); xCode=$?
+
+    if test ${xCode} -gt 0
+    then
+      if test ${xCode} -eq 137
+      then
+        verdict="TE"
+      else
+        verdict="RE"
+      fi    
+      break
+    fi
+
+
+
+    (./checker ${io}"/out"${n} out); xCode=$?
+
+    if test ${xCode} -gt 0 ; then
+        resName=${fName}"_WA"
+      break
+    fi
+  done
+
   return 0
 }
 
