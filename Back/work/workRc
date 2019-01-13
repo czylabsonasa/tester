@@ -94,15 +94,18 @@ function run {
   nIO=$(ls ${io}/in* | wc -w)
   for n in $(seq 1 ${nIO});
   do
-    (./actX < ${ioD}"/in"${n} > out); xCode=$?
+    (ulimit -t ${uTime} -m ${uMem} -v ${uVirt} -n ${uFd}; ./actX < ${ioD}"/in"${n} > out); xCode=$?
 
     if test ${xCode} -gt 0
     then
+      echo in${n}"=fail" >> ${subId}"_res"
       if test ${xCode} -eq 137
       then
         verdict="TE"
+        echo 'verdict="TE"' >> ${subId}"_res"
       else
         verdict="RE"
+        echo 'verdict="RE"' >> ${subId}"_res"
       fi    
       break
     fi
@@ -112,11 +115,13 @@ function run {
     (./checker ${io}"/out"${n} out); xCode=$?
 
     if test ${xCode} -gt 0 ; then
-        resName=${fName}"_WA"
+      echo in${n}"=fail" >> ${subId}"_res"
+      verdict="WA"
+      echo 'verdict="WA"' >> ${subId}"_res"
       break
     fi
+    echo in${n}"=ok" >> ${subId}"_res"
   done
 
-  return 0
+  return ${xCode}
 }
-
