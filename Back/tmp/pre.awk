@@ -1,3 +1,4 @@
+# embed aux file
 BEGIN {
   FS = ":" ;
 }

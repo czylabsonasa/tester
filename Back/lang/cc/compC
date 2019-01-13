@@ -1,0 +1,1 @@
+compC="g++ -x c++ -std=c++11 -o actX src"

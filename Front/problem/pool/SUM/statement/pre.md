@@ -1,0 +1,1 @@
+Adott $a,b\in [-1000,1000]$ egészek esetén számold ki $a+b$-t!

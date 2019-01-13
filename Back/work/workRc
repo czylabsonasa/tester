@@ -4,7 +4,7 @@ declare -r work=${base}"/work"
 declare -r target="/home/teszt/public_html/tester/Front/work/fromBack"
 declare -r cpMethod="cp"
 
-declare tarF subId probId userId langName
+declare tarF subId problemId userId langName
 
 function off {
   if test -e pid/${1}
@@ -27,18 +27,64 @@ function on {
 
 
 function preTester {
-    rm -f "testBed/"*
-    mv ${tarF} testBed
-    cd testBed
-    subId=$(echo ${tarF}|cut -d'_' -f1)
-    tar xf ${tarF}
-    source ${subId}"_data"
-    cp -RL ${base}"/problem/}"${pId}"/io" ${base}"/problem/}"${pId}"/checker" .
+  rm -rf "testBed/"*
+  tar -xf ${tarF} -C testBed/
+  mv ${tarF} ${base}"/sub/pre"
+  cd testBed
+  source data
+  ln -s ${base}"/problem/"${problemId}"/io"
+  if test -e ${base}"/problem/"${problemId}"/checker"
+  then
+    cp ${base}"/problem/"${problemId}"/checker/checker" .
+  else
+    cp ${base}"/problem/checker/default/checker" .
+  fi
+  if test -e ${base}"/problem/"${problemId}"/limit"
+  then
+    cp ${base}"/problem/"${problemId}"/limit" .
+  else
+    cp ${base}"/problem/limit/default/limit" .
+  fi
+  cd ${work}
 }
 
-function 
+function compile {
+  cd testBed
+  declare compC="_"
+  declare -i xCode
+  while true
+  do
+    if [ ${langName} = "c" ]
+    then
+      source ${base}/lang/c/compC
+      break 
+    fi
+
+    if [ ${langName} = "cc" ]
+    then
+      source ${base}/lang/cc/compC
+      break
+    fi
+
+    if [ ${langName} = "pas" ]
+    then
+      source ${base}/lang/pas/compC
+      break
+    fi
+    break
+  done
+
+  if [ "${compC}" = "_" ]
+  then
+    xCode=-1
+  else
+    (${compC});xCode=$?
+  fi
+  cd ${work}
+  return ${xCode}
+}
 
 function postTester {
-  
+  return 0
 }
 

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cat pre.md | nawk -f pre.awk > statement.md
-pandoc  -t html5 statement.md -o statement --mathjax
+pandoc  -t html5 statement.md -o statement --katex

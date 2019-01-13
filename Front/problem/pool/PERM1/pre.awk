@@ -1,6 +1,6 @@
 BEGIN {
   FS="_" ;
-  getline<"list";
+  getline<"../head";
   print "# " $3 ;
 
 }

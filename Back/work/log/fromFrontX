@@ -1,0 +1,18 @@
+compile: ok
+src: In function ‘int main()’:
+src:5:3: error: expected ‘;’ before ‘printf’
+   printf("%d\n",a+b);
+   ^~~~~~
+compile: fail
+compile: ok
+Error: Illegal parameter: -o
+Error: /usr/bin/ppcx64 returned an error exitcode
+compile: fail
+Free Pascal Compiler version 3.0.4+dfsg-18ubuntu2 [2018/08/29] for x86_64
+Copyright (c) 1993-2017 by Florian Klaempfl and others
+Target OS: Linux for x86-64
+Compiling src
+Linking actX
+/usr/bin/ld.bfd: warning: link.res contains output sections; did you forget -T?
+7 lines compiled, 0.1 sec
+compile: ok

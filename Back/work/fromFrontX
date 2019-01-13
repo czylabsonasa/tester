@@ -2,15 +2,21 @@
 
 source workRc
 
-cd ${work}"/fromFront"
+cd ${work}
 
 while true
 do
-  for tarF in $(find "*_pre" -type f -printf "%f " )
+  for tarF in $( find  "fromFront/" -name "*_pre" )
   do
     preTester
-    tester
-    rm -f ${fName}
+    compile
+    if [ $? = 0 ]
+    then
+      echo "compile: ok"
+    else
+      echo "compile: fail"
+    fi
+#    tester
   done
   sleep 2
 done
