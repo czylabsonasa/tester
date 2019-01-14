@@ -8,8 +8,12 @@ rm -f pid/*
 
 
 rm -f ${toBack}"/"*
+chmod o+w ${toBack}
+
 rm -f ${fromBack}"/"*
 
 echo "0" > ${sub}"/count"
+chmod o+w ${sub}"/count"
+
 > ${sub}"/list"
 
