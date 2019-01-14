@@ -1,7 +1,6 @@
 #!/bin/bash
 
-source base
-source def
+source workRc
 
 on toBackX
 on fromBackX

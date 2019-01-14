@@ -2,19 +2,21 @@
 
 # a kesz ures fajlokat visszajuttatja webszerverre
 
-source base
-source def
+source workRc
 
 declare fName
 
 cd ${work}"/toFront"
 
-while true ;
+while true
 do
-  for fName in $(find "*_res" -type f -printf "%f " ) ; 
+  for fName in $(find . -name "*_res" -printf "%f " )
   do
-    ${cpMethod} ${fName} ${targetDir}
-    rm -f ${fName}
+    ${cpMethod} ${fName} ${target}
+    if [ $? = 0 ]
+    then
+      rm -f ${fName}
+    fi
   done
   sleep 2
 done

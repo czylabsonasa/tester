@@ -1,7 +1,7 @@
-declare -r base="/home/nosy/public_html/tester/Back"
+declare -r base="/home/teszt/public_html/tester/Back"
 declare -r work=${base}"/work"
 
-declare -r target="/home/nosy/public_html/tester/Front/work/fromBack"
+declare -r target="/home/teszt/public_html/tester/Front/work/fromBack"
 declare -r cpMethod="cp"
 
 declare tarF 
@@ -36,12 +36,18 @@ function on {
 
 
 function pre {
+echo "tarF="${tarF}
   verdict="IE"
-  rm -rf "testBed/"*
-  tar -xf ${tarF} -C testBed/
-  mv ${tarF} ${base}"/sub/pre"
+  cp "fromFront/"${tarF} ${base}"/sub/pre"
+  rm -rf testBed/*
+  mv "fromFront/"${tarF} testBed
   cd testBed
+  subId=$(echo ${tarF}|cut -d'_' -f1)  
+  tar xf ${tarF}
+  mv ${subId}_data data
+  mv ${subId}_src src
   source data
+#
   echo "subId="${subId} 
   cp data ${subId}"_res"
   echo "procBeg="\"$(date)\" >> ${subId}"_res"
@@ -130,4 +136,5 @@ function post {
   cd testBed
   echo "procEnd="\"$(date)\" >> ${subId}"_res"
   cp ${subId}"_res" ${base}"/sub/res"
+  cp ${subId}"_res" ${work}"/toFront"
 }

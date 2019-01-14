@@ -1,8 +1,13 @@
+declare -r base="/home/teszt/public_html/tester/Front"
+declare -r target="/home/teszt/public_html/tester/Back/work/fromFront"
+declare -r cpMethod="cp"
+
 
 declare -r work=${base}"/work"
 declare -r toBack=${work}"/toBack"
 declare -r fromBack=${work}"/fromBack"
 declare -r sub=${base}"/sub"
+
 
 function on {
   if ! test -e pid/${1}
@@ -22,4 +27,12 @@ function off {
     kill -9 $(cat pid/${1})
     rm -f pid/${1}
   fi
+}
+
+
+function reg {
+  (
+    source ${fName}
+    
+  )
 }

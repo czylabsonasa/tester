@@ -5,9 +5,8 @@ source workRc
 cd ${work}
 while true
 do
-  for tarF in $( find  "fromFront/" -name "*_pre" )
+  for tarF in $( find fromFront/ -name "*_pre" -printf "%f " )
   do
-    
     pre; cd ${work}
     if [ ${verdict} = "_" ]
     then

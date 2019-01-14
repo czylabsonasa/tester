@@ -1,6 +1,0 @@
-declare -r base="/home/teszt/public_html/tester/Front"
-
-declare -r target="/home/teszt/public_html/tester/Back/work/fromFront"
-
-declare -r cpMethod="cp"
-

@@ -2,25 +2,39 @@
 
 # fogadja a feldolgozo geptol "vissza"-erkezo eredmenyeket
 
-source base
-source def
+source workRc
 
 declare fName
 declare tSub
 
 cd ${fromBack}
 
-while true ; do
+while true
+do
 
-  for fName in $(find . -type f -printf "%f " ) ; 
+  for fName in $( find . -name "*_res" -printf "%f " )
   do
-    tSub=${sub}"/list_"
+    cp ${fName} ${base}"/sub/res"
+    (
+      source ${fName}
+      row=${subId}"_"${userName}"_"${problemName}"_"${langName}"_"${verdict}
+      tSub=${base}"/sub/list"
+      echo ${row} > ${tSub}"_"
+      cat ${tSub} >> ${tSub}"_"
+      mv ${tSub}"_" ${tSub}
 
-    echo "${fName}" > ${tSub}
-    cat ${sub}"/list" >> ${tSub}
-    mv ${tSub} ${sub}"/list"
+      row=${subId}"_"${userName}"_"${langName}"_"${verdict}
+      tSub=${base}"/problem/"${problemId}"/sub/list"
+      echo ${row} > ${tSub}"_"
+      cat ${tSub} >> ${tSub}"_"
+      mv ${tSub}"_" ${tSub}
 
-    rm -f ${fName}
+    )
+    if [ $? = 0 ]
+    then
+      rm -f ${fName}
+    fi
+
   done
 
   sleep 2
