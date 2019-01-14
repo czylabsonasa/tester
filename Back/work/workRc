@@ -96,6 +96,7 @@ function run {
   cd testBed
   source limit
   nIO=$(ls ${io}/in* | wc -w)
+  verdict="_"
   for n in $(seq 1 ${nIO});
   do
     echo "uTime="${uTime}
@@ -128,13 +129,19 @@ function run {
     echo in${n}"=ok" >> ${subId}"_res"
   done
 
+  if [ ${verdict} = "_" ]
+  then
+      verdict="AC"
+      echo 'verdict="AC"' >> ${subId}"_res"
+  fi
+
   return ${xCode}
 }
 
 
 function post {
   cd testBed
-  echo "procEnd="\"$(date)\" >> ${subId}"_res"
   cp ${subId}"_res" ${base}"/sub/res"
   cp ${subId}"_res" ${work}"/toFront"
+  echo "procEnd="\"$(date)\" >> ${subId}"_res"
 }

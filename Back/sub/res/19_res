@@ -1,7 +1,10 @@
-subId="20"
+subId="19"
 problemId="1"
 problemName="SUM"
 problemTitle="Összeadás"
 userId="1"
 userName="teszt"
 langName="cc"
+procBeg="2019. jan. 14., hétfő, 22:20:00 CET"
+in1=fail
+verdict="TE"

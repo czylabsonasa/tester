@@ -29,10 +29,3 @@ function off {
   fi
 }
 
-
-function reg {
-  (
-    source ${fName}
-    
-  )
-}

@@ -48,8 +48,8 @@
         continue;
       }
       if("res"==$val[0]){ //eredmények
-        echo '<div class="feladatB">' ;
-        echo result($val[1]) ;
+        echo '<div class="feladatC">' ;
+        echo list2table("problem/".$val[1]."/sub") ;
         echo '</div>';
         continue;
       }

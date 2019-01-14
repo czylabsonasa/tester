@@ -5,3 +5,6 @@ problemTitle="Összeadás"
 userId="1"
 userName="teszt"
 langName="cc"
+procBeg="2019. jan. 14., hétfő, 22:21:09 CET"
+in1=fail
+verdict="WA"

@@ -60,7 +60,7 @@ function collectGets(){// collect get params
       $gMagam.="/feltöltés";
       array_push( $gColl, array("sub",$elem ) ) ;
     }
-    if(isset($_GET[ "res" ])){ // feltöltés
+    if(isset($_GET[ "res" ])){ // results
       $gMagam.="/eredmények";
       array_push( $gColl, array("res",$elem ) ) ;
     }
@@ -90,7 +90,7 @@ function upload($pId){
 //  echo "upload par=".$pId;
   global $gUname, $gUid, $gSrcMaxSize;
 
-	if( $_FILES[ "source" ][ "size" ] > 0 ) {
+	if( isset($_FILES["source"]) && ($_FILES[ "source" ][ "size" ] > 0 )) {
     if( $_FILES[ "source" ][ "size" ] > $gSrcMaxSize ){
       return "Hiba. A forrás nem lehet nagyobb mint $gSrcMaxSize bájt" ;
     }
@@ -159,15 +159,16 @@ FORM;
 function view2table($ut){ // problem list-eknél
   $ret= "<table border=0>" ;
   $f=fopen( $ut."/head" , "r" ) ;
-  $ret.=arr2row(explode(fgets($f)));
+  $ret.=arr2row(explode("_",fgets($f)));
   fclose($f);
 
   $f=fopen( $ut."/list" , "r" ) ;
 
   while( $line = fgets( $f ) ) {
-    $tok=explode( '_' , $line ) ;
+    $tok=explode( "_" , $line ) ;
 $ret.= <<< _HD
 <tr>
+<td>$tok[0]</td>
 <td>$tok[1]</td>
 <td><a href="index.php?prob=$tok[0]"> $tok[2] </a> </td>
 </tr>
@@ -194,7 +195,6 @@ function arr2row($arr){
 
 function list2table($ut){ // pl sub/list-nél
   $ret="<table border=1>\n" ;
-  
   $f=fopen($ut."/head","r");
   $ret.=arr2row(explode("_",fgets($f)));
   fclose($f);
@@ -202,11 +202,14 @@ function list2table($ut){ // pl sub/list-nél
   
 // tobbi            
   $f=fopen($ut."/list","r");
-  while( true ) {
-    $words=explode("_",fgets($f));
-    if(empty($words)){
-      break;
-    }
+
+  while($line=fgets($f)) {
+    $words=explode("_",$line);
+//    echo count($words)."<br>";
+
+    // if(0==count($words)){
+    //   break;
+    // }
     $ret.=arr2row($words);
   }
   $ret.="</table>\n" ;
