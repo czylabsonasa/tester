@@ -3,21 +3,21 @@
 source workRc
 
 cd ${work}
-
 while true
 do
   for tarF in $( find  "fromFront/" -name "*_pre" )
   do
-    pre
+    
+    pre; cd ${work}
     if [ ${verdict} = "_" ]
     then
-      compile
+      compile; cd ${work}
     fi
     if [ ${verdict} = "_" ]
     then
-      run
+      run; cd ${work}
     fi
-    post
+    post; cd ${work}
   done
   sleep 2
 done

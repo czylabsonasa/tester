@@ -4,7 +4,15 @@ declare -r work=${base}"/work"
 declare -r target="/home/teszt/public_html/tester/Front/work/fromBack"
 declare -r cpMethod="cp"
 
-declare tarF subId problemId problemName userId userName langName xCode 
+declare tarF 
+declare subId 
+declare problemId 
+declare problemName 
+declare userId 
+declare userName 
+declare langName 
+declare xCode 
+
 declare verdict="_"
 
 function off {
@@ -28,12 +36,13 @@ function on {
 
 
 function pre {
-  (
+  verdict="IE"
   rm -rf "testBed/"*
   tar -xf ${tarF} -C testBed/
   mv ${tarF} ${base}"/sub/pre"
   cd testBed
   source data
+  echo "subId="${subId} 
   cp data ${subId}"_res"
   echo "procBeg="\"$(date)\" >> ${subId}"_res"
   ln -s ${base}"/problem/"${problemId}"/io"
@@ -49,16 +58,8 @@ function pre {
   else
     cp ${base}"/problem/limit/default/limit" .
   fi
-  )
-  xCode=$?
-  if [ ${xCode} != 0 ]
-  then
-    verdict="IE"
-    echo 'verdict="IE"' >> ${subId}"_res"
-  fi
-
-  cd ${work}
-  return ${xCode}
+  
+  verdict="_"
 }
 
 function compile {
@@ -82,15 +83,17 @@ function compile {
     echo 'verdict="CE"' >> ${subId}"_res"
   fi
 
-  cd ${work}
   return ${xCode}
 }
 
 function run {
+  cd testBed
+  source limit
   nIO=$(ls ${io}/in* | wc -w)
   for n in $(seq 1 ${nIO});
   do
-    (ulimit -t ${uTime} -m ${uMem} -v ${uVirt} -n ${uFd}; ./actX < ${ioD}"/in"${n} > out); xCode=$?
+    echo "uTime="${uTime}
+    (ulimit -t ${uTime} -m ${uMem} -v ${uVirt} -n ${uFd}; ./actX < "io/in"${n} > out); xCode=$?
 
     if test ${xCode} -gt 0
     then
@@ -108,7 +111,7 @@ function run {
 
 
 
-    (./checker ${io}"/out"${n} out); xCode=$?
+    (./checker "io/out"${n} out); xCode=$?
 
     if test ${xCode} -gt 0 ; then
       echo in${n}"=fail" >> ${subId}"_res"
@@ -124,6 +127,7 @@ function run {
 
 
 function post {
+  cd testBed
   echo "procEnd="\"$(date)\" >> ${subId}"_res"
-  cp ${subId}_res ${base}"/sub/res"
+  cp ${subId}"_res" ${base}"/sub/res"
 }
