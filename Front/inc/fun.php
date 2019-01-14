@@ -142,9 +142,10 @@ return <<< FORM
   	<input type="file" name="source"> </input>
     Nyelv:
     <select name="lang"> 
-      <option value='c' > c </option>  
       <option value='cc' > c++ </option>  
-    </select>
+      <option value='jl' > julia </option>  
+      <option value='c' > c </option>  
+      </select>
 
   	<input type="submit" value="Mehet"> </input>
     <input type="hidden" name="problem" value="$pId"> </input>
