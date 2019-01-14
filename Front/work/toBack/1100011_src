@@ -1,0 +1,103 @@
+p = [ 2 -1 2 1 -2 ]
+polyval( p , [ -2 -1 0 1 2 ] )
+exit
+# Octave 4.0.3, Thu May 03 11:15:42 2018 CEST <nosy@nosy-desktop>
+1:10
+[1:10]
+[1:10]==1:10
+[[1:10]]==1:10
+[[1:5],5:10]==1:10
+[1:5,5:10]==1:10
+[1:5,5:10]==1:10
+cat
+cat(1:5,5:10)
+cat(1:5,5:10,1)
+cat(1,1:5,5:10)
+cat(2,1:5,5:10)
+cat(2,1:5,6:10)
+[1:5,6:10]
+[1:5,6:10]==1:10
+exit
+# Octave 4.2.2, Mon Oct 29 10:53:02 2018 CET <nosy@nosy-desktop>
+# Octave 4.2.2, Fri Dec 21 12:06:48 2018 CET <nosy@nosy-desktop>
+pkg list
+help pkg
+ezt="io"
+pkg install -nodeps -forge ezt
+pkg install -nodeps -forge sprintf("io")
+pkg install -nodeps -forge $ezt
+eval(ezt)
+pkg install -nodeps -forge eva(ezt)
+pkg install -nodeps -forge eval(ezt)
+type pkg
+eval("asd"ezt)
+eval(ezt)
+x="pkg list"
+eval(x)
+for i in ['a','b']
+for i=['a','b']
+print i
+end
+i
+end
+for i=['a','b']
+a
+a=['a','b' ]
+a(1)
+a(2)
+install
+[A
+install
+help disp
+disp("asdasd")
+disp('asdasd')
+install
+install
+install
+csom
+csom[1]
+csom[1,1]
+csom(1,1)
+csom(1)
+disp(csom(1))
+disp(csom(1,2))
+disp(csom(1,1))
+disp(csom(7,1))
+csom(7,1)
+cell2mat(csom(1,1))
+length csom
+csom
+size(csom)
+length(csom)
+install
+install
+install
+csom
+csom(7,1)
+cellstr(csom(7,1))
+cell2mat(csom(7,1))
+install
+install
+install
+install
+install
+help strcat 
+install
+install
+csom
+ls 
+strcat('ls',' -l')
+eval(strcat('ls',' -l'))
+eval(strcat('pkg',' list'))
+eval(strcat('pkg',' install -forge io '))
+csom
+eval(strcat('pkg install -forge ',cell2mat(csom(1,1))))
+install
+install
+eval(strcat('pkg',' install -forge ode '))
+?ode
+help ode
+help ode23 
+help odeset 
+exit
+# Octave 4.2.2, Tue Jan 08 09:40:52 2019 CET <nosy@nosy-desktop>

@@ -1,7 +1,10 @@
 subId=1
 problemId=1
+problemName=SUM
 userId=1
-langName=cc
-procBeg="2019. jan. 14., hétfő, 01:01:57 CET"
+userName=teszt
+langName=pas
+subDate="2019. jan. 13., vasárnap, 21:25:59 CET"
+procBeg="2019. jan. 14., hétfő, 09:24:19 CET"
 verdict="CE"
-procEnd="2019. jan. 14., hétfő, 01:01:57 CET"
+procEnd="2019. jan. 14., hétfő, 09:24:19 CET"

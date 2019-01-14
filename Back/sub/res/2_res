@@ -5,3 +5,7 @@ userId=1
 userName=teszt
 langName=cc
 subDate="2019. jan. 13., vasárnap, 21:25:59 CET"
+procBeg="2019. jan. 14., hétfő, 09:25:52 CET"
+in1=fail
+verdict="TE"
+procEnd="2019. jan. 14., hétfő, 09:25:55 CET"

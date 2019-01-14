@@ -1,0 +1,6 @@
+# time: 2018-03-07 20:13:00 CET
+# mode: julia
+	Pkg.add("LightGraphs")
+# time: 2018-03-07 20:14:29 CET
+# mode: julia
+	Pkg.update()

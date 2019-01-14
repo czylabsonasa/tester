@@ -1,3 +1,5 @@
+#!/usr/bin/awk -f
+
 BEGIN {
   FS="_" ;
   getline<"../head";

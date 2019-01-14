@@ -1,8 +1,8 @@
 <?php
 
 function checkPwd(){ // check pwd
-  include ( "password.php" ) ;
-  return ( isset( $_POST[ "uname" ] ) && isset( $pwd[ $_POST[ "uname" ] ] ) && ( $pwd[ $_POST[ "uname" ] ] == $_POST[ "password" ] ) );
+  include ( "udata.php" ) ;
+  return ( isset( $_POST[ "uname" ] ) && isset( $uData[ $_POST[ "uname" ] ] ) && ( $uData[ $_POST[ "uname" ] ]["pwd"] == $_POST[ "password" ] ) );
 }
 
 function login(){
@@ -78,40 +78,66 @@ function collectGets(){// collect get params
 //   return $h;
 // }
 
-function upload($prob){
-  global $gUname, $gSrcMaxSize;
-	if( $_FILES[ "source" ][ "size" ] > 0 ) {
+function pairs2file($arr, $ut){
+  $f=fopen($ut,"w");
+  foreach($arr as $k=>$v){
+    fprintf($f,"%s=\"%s\"\n",$k,$v);
+  }
+  fclose($f);
+}
 
+function upload($pId){
+//  echo "upload par=".$pId;
+  global $gUname, $gUid, $gSrcMaxSize;
+
+	if( $_FILES[ "source" ][ "size" ] > 0 ) {
     if( $_FILES[ "source" ][ "size" ] > $gSrcMaxSize ){
       return "Hiba. A forrás nem lehet nagyobb mint $gSrcMaxSize bájt" ;
-		}
-
-    $count=0;
-    while( true ) {
-      $f = fopen( 'sub/count' , 'r+' ) ; // az r+ az irhat is.
-      if( flock( $f, LOCK_EX ) == true ) {
-        $count = ( int ) fread( $f, 42 ) ;
-        $count += 1 ;
-        fseek( $f, 0 ) ;
-        fwrite( $f , sprintf( "%d" , $count ) ) ;
-        fclose( $f ) ;
-        break ;
-      }
     }
-    
 
+  $subId=0;
+  while( true ) {
+    $f = fopen( "sub/count" , "r+" ) ; // az r+ az irhat is.
+    if( flock( $f, LOCK_EX ) == true ) {
+      $subId = ( int ) fread( $f, 42 ) ;
+      $subId += 1 ;
+      fseek( $f, 0 ) ;
+      fwrite( $f , sprintf( "%d" , $subId ) ) ;
+      fclose( $f ) ;
+      break ;
+    }
+  }
+  
+  $uHead=getHead("user/".$gUid);
+  $pHead=getHead("problem/".$pId);
+// echo "---------------------------------------";
+// echo "<br>";
+// print_r($uHead);
+// echo "---------------------------------------";
+// echo "<br>";
 
-    $subName = $count."_".$gUname."_".$prob."_".$_POST[ 'lang' ] ;
-    chmod( $_FILES[ 'source' ][ 'tmp_name' ] , 0666 ) ; // tmp_name nevu file jon letre feltolteskor
+  $arr=array(
+    "subId"=>$subId,
+    "problemId"=>$pId,
+    "problemName"=>$pHead[1],
+    "problemTitle"=>$pHead[2],
+    "userId"=>$uHead[0],
+    "userName"=>$uHead[1],
+    "langName"=>$_POST[ "lang" ]
+  );
+  
+  pairs2file($arr, "work/toBack/".$subId."_data");
+
+  chmod( $_FILES[ "source" ][ "tmp_name" ] , 0666 ) ; // tmp_name nevu file jon letre feltolteskor
 //echo $_FILES[ 'source' ][ 'tmp_name' ] ;    
-    move_uploaded_file( $_FILES[ 'source' ][ 'tmp_name' ] , 'work/toBack/'.$subName ) ;    
+  move_uploaded_file( $_FILES[ "source" ][ "tmp_name" ] , "work/toBack/".$subId."_src" ) ;    
 //    header("location: index.php?prob=".$prob);
 
-    return "<b>Ok. A forrás továbbítva ($count)</b>" ;
+  return "<b>Ok. A forrás továbbítva ($subId)</b>" ;
 
   }else{
 return <<< FORM
-	<form enctype="multipart/form-data" action="index.php?prob=$prob&sub" method="post">
+	<form enctype="multipart/form-data" action="index.php?prob=$pId&sub" method="post">
   	Forrás:
   	<input type="file" name="source"> </input>
     Nyelv:
@@ -121,7 +147,7 @@ return <<< FORM
     </select>
 
   	<input type="submit" value="Mehet"> </input>
-    <input type="hidden" name="problem" value="$prob"> </input>
+    <input type="hidden" name="problem" value="$pId"> </input>
   </form>
 FORM;
   }

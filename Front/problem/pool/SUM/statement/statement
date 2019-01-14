@@ -1,5 +1,5 @@
 <h2 id="összeadás">Összeadás</h2>
-<p>Adott <span class="math inline">a,b\in [-1000,1000]</span> egészek esetén számold ki <span class="math inline">a+b</span>-t!</p>
+<p>Adott <span class="math inline">\(a,b\in [-1000,1000]\)</span> egészek esetén számold ki <span class="math inline">\(a+b\)</span>-t!</p>
 <h3 id="példa-bemenet">Példa bemenet:</h3>
 <pre><code>1 2</code></pre>
 <h3 id="példa-kimenet">Példa kimenet:</h3>

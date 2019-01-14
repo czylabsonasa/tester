@@ -22,7 +22,7 @@
       if("prob"==$val[0]){ //feladat
         $h=$val[1];
         echo '<div class="feladat">' ;
-        include( "problem/".$val[1]."/statement" ) ; 
+        include( "problem/".$val[1]."/statement/statement" ) ; 
         echo '</div>';
         echo '<div class="feladatA">' ;
         echo '<a href=index.php?prob='.$val[1].'&sub> feltöltés </a>';
