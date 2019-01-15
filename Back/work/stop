@@ -3,4 +3,7 @@
 source workRc
 
 off toFrontX
+killall toFrontX
 off fromFrontX
+killall fromFrontX
+

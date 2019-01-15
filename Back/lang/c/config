@@ -1,1 +1,2 @@
 compC="gcc -x c -ansi -lm -o actX src"
+runC="./actX"

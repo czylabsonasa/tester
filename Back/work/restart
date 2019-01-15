@@ -1,0 +1,4 @@
+#!/bin/bash
+
+./stop 2>> log/log
+./start

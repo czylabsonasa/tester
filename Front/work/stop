@@ -3,6 +3,7 @@
 source workRc
 
 off toBackX
+killall toBackX
+
 off fromBackX
-
-
+killall fromBackX

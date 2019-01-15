@@ -13,6 +13,9 @@ declare userName
 declare langName 
 declare xCode 
 
+declare compC
+declare runC
+
 declare verdict="_"
 
 function off {
@@ -97,10 +100,16 @@ function run {
   source limit
   nIO=$(ls ${io}/in* | wc -w)
   verdict="_"
+
+#echo "runC="${runC}
+#echo "compC="${compC}
+
   for n in $(seq 1 ${nIO});
   do
-    echo "uTime="${uTime}
-    (ulimit -t ${uTime} -m ${uMem} -v ${uVirt} -n ${uFd}; ./actX < "io/in"${n} > out); xCode=$?
+#    echo "uTime="${uTime}
+#    echo "path="${PATH}
+
+    (ulimit -t ${ut} && ${runC} < "io/in"${n} > out); xCode=$?
 
     if test ${xCode} -gt 0
     then

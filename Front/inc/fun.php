@@ -138,18 +138,17 @@ function upload($pId){
   }else{
 return <<< FORM
 	<form enctype="multipart/form-data" action="index.php?prob=$pId&sub" method="post">
-  	Forrás:
-  	<input type="file" name="source"> </input>
-    Nyelv:
-    <select name="lang"> 
-      <option value='cc' > c++ </option>  
-      <option value='jl' > julia </option>  
-      <option value='c' > c </option>  
-      </select>
 
   	<input type="submit" value="Mehet"> </input>
+    <select name="lang"> 
+      <option value='c++' > c++ </option>  
+      <option value='julia' > julia </option>  
+      <option value='c' > c </option>  
+      </select>
     <input type="hidden" name="problem" value="$pId"> </input>
-  </form>
+    <input type="file" name="source"> </input> 
+
+    </form>
 FORM;
   }
 
