@@ -1,0 +1,25 @@
+<h2 id="prímszám">Prímszám</h2>
+<p>Adott <span class="math inline">\(a\in [1,10^7]\)</span> egész esetén döntsd el hogy prímszám-e! Az input: egy <span class="math inline">\(a_1\ldots a_n\)</span> alakú sor, az output <span class="math inline">\(n\)</span> sorból áll, melyek mindegyike a <em>prím</em> avagy <em>nem prím</em> választ kell tartalmazza.</p>
+<h3 id="példa-bemenet">Példa bemenet:</h3>
+<pre><code>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20</code></pre>
+<h3 id="példa-kimenet">Példa kimenet:</h3>
+<pre><code>nem prím
+prím
+prím
+nem prím
+prím
+nem prím
+prím
+nem prím
+nem prím
+nem prím
+prím
+nem prím
+prím
+nem prím
+nem prím
+nem prím
+prím
+nem prím
+prím
+nem prím</code></pre>
