@@ -1,7 +1,0 @@
-<h2 id="osztók-száma">Osztók száma</h2>
-<p>Adott <span class="math inline">\(a\in [1,1000000]\)</span> egész esetén számold ki az osztói <span class="math inline">\(d\)</span> számát! Az input: egy <span class="math inline">\(a_1\ldots a_n\)</span> alakú sor, az output egy <span class="math inline">\(d_1\ldots d_n\)</span> alakú sor, ahol <span class="math inline">\(n&lt;100\)</span>.</p>
-<h3 id="példa-bemenet">Példa bemenet:</h3>
-<pre><code>10 1000 1 4 7
-</code></pre>
-<h3 id="példa-kimenet">Példa kimenet:</h3>
-<pre><code>4 16 1 3 2 </code></pre>
