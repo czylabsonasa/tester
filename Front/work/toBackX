@@ -13,11 +13,11 @@ while true ; do
   for fName in $(find . -name "*_src" -printf "%f " ) ; 
   do
 # count uname problem lang
+    subId=$(echo ${fName}|cut -d'_' -f1)
     (
       source ${subId}"_data"
       touch ${base}"/lock/"${userId}"_"${problemId}
     )
-    subId=$(echo ${fName}|cut -d'_' -f1)
     tar cf ${subId}_pre  ${subId}_src ${subId}_data
     cp ${subId}_pre ${sub}"/pre"
     ${cpMethod} ${subId}_pre ${target}/${subId}_pre

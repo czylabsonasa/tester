@@ -30,11 +30,12 @@ do
       mv ${tSub}"_" ${tSub}
 
       row=${subId}"_"${problemName}"_"${langName}"_"${verdict}
-      tSub=${base}"/sub/problem/"${userId}"/list"
+      tSub=${base}"/sub/user/"${userId}"/list"
       echo ${row} > ${tSub}"_"
       cat ${tSub} >> ${tSub}"_"
       mv ${tSub}"_" ${tSub}
-      rm -f lock/${userId}_${problemId}
+
+      rm -f ${base}"/lock/"${userId}_${problemId}
     )
     if [ $? = 0 ]
     then
