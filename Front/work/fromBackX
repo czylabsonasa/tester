@@ -24,11 +24,17 @@ do
       mv ${tSub}"_" ${tSub}
 
       row=${subId}"_"${userName}"_"${langName}"_"${verdict}
-      tSub=${base}"/problem/"${problemId}"/sub/list"
+      tSub=${base}"/sub/problem/"${problemId}"/list"
       echo ${row} > ${tSub}"_"
       cat ${tSub} >> ${tSub}"_"
       mv ${tSub}"_" ${tSub}
 
+      row=${subId}"_"${problemName}"_"${langName}"_"${verdict}
+      tSub=${base}"/sub/problem/"${userId}"/list"
+      echo ${row} > ${tSub}"_"
+      cat ${tSub} >> ${tSub}"_"
+      mv ${tSub}"_" ${tSub}
+      rm -f lock/${userId}_${problemId}
     )
     if [ $? = 0 ]
     then

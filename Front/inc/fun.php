@@ -95,6 +95,10 @@ function upload($pId){
       return "Hiba. A forrás nem lehet nagyobb mint $gSrcMaxSize bájt" ;
     }
 
+  if(file_exists("lock/".$gUid."_".$pId)){
+    return "Hiba. Még van feldolgozatlan feltöltésed erre a feladatra.";
+  }
+
   $subId=0;
   while( true ) {
     $f = fopen( "sub/count" , "r+" ) ; // az r+ az irhat is.

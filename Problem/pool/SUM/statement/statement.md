@@ -1,5 +1,5 @@
 ## Összeadás
-Adott $a,b\in [-1000,1000]$ egészek esetén számold ki $a+b$-t!
+Adott $a,b\in [-10^3,10^3]$ egészek esetén számold ki $a+b$-t!
 
 
 ### Példa bemenet:

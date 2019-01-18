@@ -23,6 +23,21 @@
     <?php echo $gMsg ; ?>
     <?php 
     foreach( $gColl as $idx => $val ){
+      if("sub"==$val[0]){ //feltoltes
+        echo '<div class="feladatB">' ;
+        echo upload($val[1]) ;
+        echo '</div>';
+        continue;
+      }
+
+
+      if("res"==$val[0]){ //eredmények
+        echo '<div class="feladatC">' ;
+        echo list2table("sub/problem/".$val[1]) ;
+        echo '</div>';
+        continue;
+      }
+
       if("prob"==$val[0]){ //feladat
         $h=$val[1];
         echo '<div class="feladat">' ;
@@ -45,18 +60,6 @@
         continue;
       }
 
-      if("sub"==$val[0]){ //feltoltes
-        echo '<div class="feladatB">' ;
-        echo upload($val[1]) ;
-        echo '</div>';
-        continue;
-      }
-      if("res"==$val[0]){ //eredmények
-        echo '<div class="feladatC">' ;
-        echo list2table("problem/".$val[1]."/sub") ;
-        echo '</div>';
-        continue;
-      }
 
 
     }

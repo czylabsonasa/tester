@@ -1,0 +1,21 @@
+Generáld le a [2,100000000] intervallum prímszámait.
+<b>A kimenet eleje és vége:</b>
+<br>
+2<br>
+3<br>
+5<br>
+7<br>
+11<br>
+13<br>
+...<br>
+99999787<br>
+99999821<br>
+99999827<br>
+99999839<br>
+99999847<br>
+99999931<br>
+99999941<br>
+99999959<br>
+99999971<br>
+99999989<br>
+<hr>

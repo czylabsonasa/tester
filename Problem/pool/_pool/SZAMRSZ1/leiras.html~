@@ -1,0 +1,20 @@
+Állítsd elő egy <b>a</b> számrendszerben megadott <b>n</b> szám <b>b</b> rendszerbeli alakját.
+A bemenet elején az esetek száma áll, az esetek <b>a n b</b> hármasok ahol <b>a</b> és <b>b</b> 
+[2,16] elemei; a <b>n</b> kisebb mint egymillió.
+<br>
+<hr>
+<b>Példa bemenet:</b>
+<br>
+4<br>
+2 10 10<br>
+10 32 2<br>
+9 10 3<br>
+16 0 10<br>
+<hr>
+<b>Példa kimenet:</b>
+<br>
+2<br>
+100000<br>
+100<br>
+0<br>
+<hr>
