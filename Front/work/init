@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source workRc
+source workRc.sh
 
 rm -f log/*
 rm -f pid/*

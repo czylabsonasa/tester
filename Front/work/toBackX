@@ -2,7 +2,7 @@
 
 # atkuldi a feltoltott "oda" ahova kell
 
-source workRc
+source workRc.sh
 
 cd ${work}"/toBack"
 

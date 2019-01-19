@@ -13,12 +13,12 @@ END {
   print "\n";
   print "### Példa bemenet:";
   print "```";
-  system(sprintf("cat %s","../io/pub/in1"));
+  system(sprintf("cat %s","../io/pub/1_in"));
   print "```";
 
   print "### Példa kimenet:";
   print "```";
-  system(sprintf("cat %s","../io/pub/out1"));
+  system(sprintf("cat %s","../io/pub/1_out"));
   print "```";
 
 

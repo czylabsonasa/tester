@@ -2,7 +2,7 @@
 
 # fogadja a feldolgozo geptol "vissza"-erkezo eredmenyeket
 
-source workRc
+source workRc.sh
 
 declare fName
 declare tSub
@@ -37,7 +37,8 @@ do
 
       rm -f ${base}"/lock/"${userId}_${problemId}
     )
-    if [ $? = 0 ]
+    xCode=$?
+    if (( xCode==0 ))
     then
       rm -f ${fName}
     fi

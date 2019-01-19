@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source workRc
+source workRc.sh
 
 off toBackX
 killall toBackX
