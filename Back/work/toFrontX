@@ -2,7 +2,7 @@
 
 # a kesz ures fajlokat visszajuttatja webszerverre
 
-source workRc.sh
+source site.sh
 
 declare fName
 

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source site.sh
+
+rm -if ${base}"/sub/pre/"*"_pre"
+rm -if ${base}"/sub/res/"*"_res"
+
+
+
+

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+source site.sh
+
+rm -f log/*X
+rm -f pid/*X
+
+
+rm -f ${toBack}"/"*
+chmod o+w ${toBack}
+
+rm -f ${fromBack}"/"*
+
+echo "0" > ${sub}"/count"
+chmod o+w ${sub}"/count"
+
+> ${sub}"/list"
+

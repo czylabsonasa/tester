@@ -11,15 +11,16 @@ BEGIN {
 
 END {
   print "\n";
-  print "### Példa bemenet:";
-  print "```";
+  print "### Példa bemenet:\n";
+  print "```\n";
   system(sprintf("cat %s","../io/pub/1_in"));
-  print "```";
+  print "```\n";
+  print "\n";
 
-  print "### Példa kimenet:";
-  print "```";
+  print "### Példa kimenet:\n";
+  print "```\n";
   system(sprintf("cat %s","../io/pub/1_out"));
-  print "```";
+  print "```\n";
 
 
 }

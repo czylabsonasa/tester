@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source workRc.sh
+source site.sh
+source work.sh
 
 cd ${work}
 while true

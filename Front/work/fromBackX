@@ -2,7 +2,8 @@
 
 # fogadja a feldolgozo geptol "vissza"-erkezo eredmenyeket
 
-source workRc.sh
+source site.sh
+source work.sh
 
 declare fName
 declare tSub
@@ -17,19 +18,19 @@ do
     cp ${fName} ${base}"/sub/res"
     (
       source ${fName}
-      row=${subId}"_"${userName}"_"${problemName}"_"${langName}"_"${verdict}
+      row=${subId}"_"${userName}"_"${problemName}"_"${langName}"_"${all_ms}"_"${verdict}
       tSub=${base}"/sub/list"
       echo ${row} > ${tSub}"_"
       cat ${tSub} >> ${tSub}"_"
       mv ${tSub}"_" ${tSub}
 
-      row=${subId}"_"${userName}"_"${langName}"_"${verdict}
+      row=${subId}"_"${userName}"_"${langName}"_"${all_ms}"_"${verdict}
       tSub=${base}"/sub/problem/"${problemId}"/list"
       echo ${row} > ${tSub}"_"
       cat ${tSub} >> ${tSub}"_"
       mv ${tSub}"_" ${tSub}
 
-      row=${subId}"_"${problemName}"_"${langName}"_"${verdict}
+      row=${subId}"_"${problemName}"_"${langName}"_"${all_ms}"_"${verdict}
       tSub=${base}"/sub/user/"${userId}"/list"
       echo ${row} > ${tSub}"_"
       cat ${tSub} >> ${tSub}"_"

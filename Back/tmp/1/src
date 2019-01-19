@@ -1,7 +1,0 @@
-program sum;
-var a,b:Integer;
-  
-begin
-  read(a,b);
-  writeln(a+b);
-end.

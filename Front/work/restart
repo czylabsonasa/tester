@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./stop 2>> log/log
+./stop 2>> log/logX
 ./start

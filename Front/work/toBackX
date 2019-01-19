@@ -2,7 +2,9 @@
 
 # atkuldi a feltoltott "oda" ahova kell
 
-source workRc.sh
+
+source site.sh
+source work.sh
 
 cd ${work}"/toBack"
 
@@ -19,7 +21,7 @@ while true ; do
       touch ${base}"/lock/"${userId}"_"${problemId}
     )
     tar cf ${subId}_pre  ${subId}_src ${subId}_data
-    cp ${subId}_pre ${sub}"/pre"
+#    cp ${subId}_pre ${sub}"/pre"
     ${cpMethod} ${subId}_pre ${target}/${subId}_pre
     if [ $? = 0 ]
     then
