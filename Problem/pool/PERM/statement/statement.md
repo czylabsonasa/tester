@@ -11,6 +11,8 @@ lexikografikusan növekvő sorrendben. A szó az angol abc
 bca
 ```
 
+
+
 ### Példa kimenet:
 
 ```
@@ -21,4 +23,5 @@ bac
 bca
 cab
 cba
- ```
+```
+

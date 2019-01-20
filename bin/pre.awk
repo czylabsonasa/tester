@@ -14,7 +14,7 @@ END {
   print "### Példa bemenet:\n";
   print "```\n";
   system(sprintf("cat %s","../io/pub/1_in"));
-  print "```\n";
+  print "\n```\n";
   print "\n";
 
   print "### Példa kimenet:\n";

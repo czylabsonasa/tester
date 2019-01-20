@@ -4,10 +4,5 @@
 <pre><code>
 bca</code></pre>
 <h3 id="példa-kimenet">Példa kimenet:</h3>
-<pre><code>
-abc
-acb
-bac
-bca
-cab
-cba</code></pre>
+<p>```</p>
+<p>abc acb bac bca cab cba ```</p>
