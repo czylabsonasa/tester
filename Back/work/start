@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source daemon.sh
+source ../../daemon.sh
 
 on toFrontX
 on fromFrontX

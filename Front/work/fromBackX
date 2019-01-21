@@ -2,8 +2,7 @@
 
 # fogadja a feldolgozo geptol "vissza"-erkezo eredmenyeket
 
-source site.sh
-source work.sh
+source def.sh
 
 declare fName
 declare tSub

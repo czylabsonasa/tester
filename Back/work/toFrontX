@@ -2,10 +2,11 @@
 
 # a kesz ures fajlokat visszajuttatja webszerverre
 
-source site.sh
+source def.sh
 
 declare fName
 
+declare -r target=${front}"/work/fromBack"
 cd ${work}"/toFront"
 
 while true

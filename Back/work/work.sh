@@ -1,3 +1,8 @@
+declare base=${back}
+declare -r work=${base}"/work"
+
+declare -r cpMethod="cp"
+
 declare tarF 
 declare subId 
 declare problemId 
@@ -22,7 +27,7 @@ declare verdict="_"
 function pre {
 echo "tarF="${tarF}
   verdict="IE"
-  cp "fromFront/"${tarF} ${base}"/sub/pre"
+  cp "fromFront/"${tarF} ${base}"/sub"
   rm -rf testBed/*
   mv "fromFront/"${tarF} testBed
   cd testBed
@@ -35,16 +40,16 @@ echo "tarF="${tarF}
   echo "subId="${subId} 
   cp data ${subId}"_res"
   echo "procBeg="\"$(date)\" >> ${subId}"_res"
-  ln -s ${base}"/problem/"${problemId}"/io"
-  if test -e ${base}"/problem/"${problemId}"/checker"
+  ln -s ${base}"/problem/id/"${problemId}"/io"
+  if test -e ${base}"/problem/id/"${problemId}"/checker"
   then
-    cp ${base}"/problem/"${problemId}"/checker/checker" .
+    cp ${base}"/problem/id/"${problemId}"/checker/checker" .
   else
     cp ${base}"/problem/checker/default/checker" .
   fi
-  if test -e ${base}"/problem/"${problemId}"/limit"
+  if test -e ${base}"/problem/id/"${problemId}"/limit"
   then
-    cp ${base}"/problem/"${problemId}"/limit" .
+    cp ${base}"/problem/id/"${problemId}"/limit" .
   else
     cp ${base}"/problem/limit/default/limit" .
   fi
@@ -168,6 +173,7 @@ function run {
 function post {
   cd testBed
   echo "procEnd="\"$(date)\" >> ${subId}"_res"
-  cp ${subId}"_res" ${base}"/sub/res"
+  cp ${subId}"_res" ${base}"/sub"
   cp ${subId}"_res" ${work}"/toFront"
 }
+

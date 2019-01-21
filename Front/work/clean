@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source site.sh
+source def.sh
 
 rm -f log/*X
 rm -f pid/*X

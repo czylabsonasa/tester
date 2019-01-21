@@ -1,9 +1,0 @@
-<?php
-echo <<< _L
-nummat/masodik<br><hr> 
-<a href=$FeladatKvt/LKN/leiras.pdf> leiras </a>
-<hr>
-<a href=$FeladatKvt/LKN/IO.tgz> példa bemenet/kimenet </a>
-<br>
-_L;
-?>

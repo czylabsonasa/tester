@@ -1,6 +1,0 @@
-<h2 id="permutáció-1">Permutáció 1</h2>
-<p>Állítsd elő egy szó összes (különböző) permutációját, lexikografikusan növekvő sorrendben. A szó az angol abc <em>különböző</em> kisbetűiből a-z áll és hossza legfeljebb 10. Input: egy szó. Output: a permutációk, soronként egy.</p>
-<h3 id="példa-bemenet">Példa bemenet:</h3>
-<pre><code>bca```
-### Példa kimenet:</code></pre>
-<p>abc acb bac bca cab cba ```</p>

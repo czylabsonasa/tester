@@ -3,12 +3,12 @@
 # atkuldi a feltoltott "oda" ahova kell
 
 
-source site.sh
-source work.sh
+source def.sh
 
 cd ${work}"/toBack"
 
 declare fName
+declare -r target=${back}"/work/fromFront"
 
 while true ; do
 
