@@ -40,7 +40,7 @@ echo "tarF="${tarF}
   echo "subId="${subId} 
   cp data ${subId}"_res"
   echo "procBeg="\"$(date)\" >> ${subId}"_res"
-  ln -s ${base}"/problem/id/"${problemId}"/io"
+  ln -s ${base}"/problem/id/"${problemId}"/io/back" io
   if test -e ${base}"/problem/id/"${problemId}"/checker"
   then
     cp ${base}"/problem/id/"${problemId}"/checker/checker" .
@@ -71,6 +71,7 @@ function compile {
     xCode=-1
   else
     (
+      ulimit -t 3
       ${compC}
     )
     xCode=$?
@@ -109,19 +110,19 @@ function run {
     MS=$(( MS/1000000 ))
 #echo ${MS}
     allMS=$(( allMS+MS ))
-    echo ${fin}"_ms="${MS} >> ${subId}"_res"
-    echo ${fin}"_run="${xCode} >> ${subId}"_res"
+    echo "_"${fin}"_ms="${MS} >> ${subId}"_res"
+    echo "_"${fin}"_run="${xCode} >> ${subId}"_res"
 
 
     if [ ${xCode} != 0 ]
     then
       if test ${xCode} -eq 137
       then
-        echo ${fin}"_ver=te" >> ${subId}"_res"
+        echo "_"${fin}"_ver=te" >> ${subId}"_res"
         echo 'verdict="TE"' >> ${subId}"_res"
         verdict="TE"
       else
-        echo ${fin}"_ver=re" >> ${subId}"_res"
+        echo "_"${fin}"_ver=re" >> ${subId}"_res"
         echo 'verdict="RE"' >> ${subId}"_res"
         verdict="RE"
       fi  
@@ -132,7 +133,7 @@ function run {
 
     if (( MS>maxMS ))
     then
-      echo ${fin}"_ver=te" >> ${subId}"_res"
+      echo "_"${fin}"_ver=te" >> ${subId}"_res"
       echo 'verdict="TE"' >> ${subId}"_res"
       verdict="TE"
       echo "all_ms="${allMS} >> ${subId}"_res"
@@ -149,13 +150,14 @@ function run {
 
     if (( xCode!=0 ))
     then
-      echo ${fin}"=wa" >> ${subId}"_res"
+      echo "_"${fin}"=wa" >> ${subId}"_res"
       verdict="WA"
       echo 'verdict="WA"' >> ${subId}"_res"
+      echo "all_ms="${allMS} >> ${subId}"_res"
       break
     fi
 
-    echo ${fin}"=ac" >> ${subId}"_res"
+    echo "_"${fin}"=ac" >> ${subId}"_res"
 
   done # input file loop
 

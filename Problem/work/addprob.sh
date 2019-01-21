@@ -15,8 +15,8 @@ declare skel="${3}"
 
 if [ -z "${pname}" ] || [ -z "${ptitle}" ]
 then
-  echo "usage: ./addprog NAME TITLE [FROM]"
-  echo "NAME,TITLE: nonempty stringd"
+  echo "usage: ./addprob NAME TITLE [FROM]"
+  echo "NAME,TITLE: nonempty strings"
   echo "the optional FROM is a previously added problem, it will be cloned"
   exit 1
 fi

@@ -1,0 +1,3 @@
+compC=true
+runC="octave src"
+

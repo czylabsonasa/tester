@@ -147,6 +147,7 @@ return <<< FORM
     <select name="lang"> 
       <option value='c++' > c++ </option>  
       <option value='julia' > julia </option>  
+      <option value='octave' > octave/matlab </option>  
       <option value='c' > c </option>  
       </select>
     <input type="hidden" name="problem" value="$pId"> </input>
