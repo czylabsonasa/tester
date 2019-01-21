@@ -2,7 +2,7 @@
 
 BEGIN {
   FS="_" ;
-  getline<"../head";
+  getline<"../info";
   print "## " $3 ;
 
 }

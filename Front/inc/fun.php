@@ -18,8 +18,8 @@ function login(){
   array_push($gColl,array("inc","login.php") ) ;
 }
 
-function getHead($ut){
-  $f=fopen($ut."/head","r");
+function getInfo($ut){
+  $f=fopen($ut."/info","r");
   $h=explode("_",fgets($f));
   fclose($f);
   return $h;
@@ -53,7 +53,7 @@ function collectGets(){// collect get params
 
   if(isset($_GET[ "prob" ])){ // feladatok
     $elem=$_GET[ "prob" ]; // ez a száma
-    $h=getHead("problem/".$elem);
+    $h=getInfo("problem/id/".$elem);
     $gMagam.="/feladatok/".$h[1];
     array_push( $gColl, array("prob",$elem ) ) ;
     if(isset($_GET[ "sub" ])){ // feltöltés
@@ -112,8 +112,8 @@ function upload($pId){
     }
   }
   
-  $uHead=getHead("user/".$gUid);
-  $pHead=getHead("problem/".$pId);
+  $uHead=getInfo("user/id/".$gUid);
+  $pHead=getInfo("problem/id/".$pId);
 // echo "---------------------------------------";
 // echo "<br>";
 // print_r($uHead);
@@ -124,7 +124,7 @@ function upload($pId){
     "subId"=>$subId,
     "problemId"=>$pId,
     "problemName"=>$pHead[1],
-    "problemTitle"=>$pHead[2],
+    "problemTitle"=>trim($pHead[2]),
     "userId"=>$uHead[0],
     "userName"=>$uHead[1],
     "langName"=>$_POST[ "lang" ]

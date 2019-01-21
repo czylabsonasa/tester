@@ -66,7 +66,7 @@ function compile {
     source ${confP}
   fi
 
-  if [ ${compC} = "_" ]
+  if [[ ${compC} = "_" ]]
   then
     xCode=-1
   else

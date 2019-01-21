@@ -6,6 +6,7 @@ source def.sh
 
 declare fName
 declare tSub
+declare tmp=""
 
 cd ${fromBack}
 
@@ -23,12 +24,24 @@ do
       cat ${tSub} >> ${tSub}"_"
       mv ${tSub}"_" ${tSub}
 
+      
+      tmp=${base}"/sub/problem/"
+      if [ ! -e ${tmp}${problemId} ]
+      then
+        cp -R ${tmp}"skel0" ${tmp}${problemId}
+      fi
       row=${subId}"_"${userName}"_"${langName}"_"${all_ms}"_"${verdict}
-      tSub=${base}"/sub/problem/"${problemId}"/list"
+      tSub=${tmp}${problemId}"/list"
       echo ${row} > ${tSub}"_"
       cat ${tSub} >> ${tSub}"_"
       mv ${tSub}"_" ${tSub}
 
+
+      tmp=${base}"/sub/user/"
+      if [ ! -e ${tmp}${userId} ]
+      then
+        cp -R ${tmp}"skel0" ${tmp}${userId}
+      fi
       row=${subId}"_"${problemName}"_"${langName}"_"${all_ms}"_"${verdict}
       tSub=${base}"/sub/user/"${userId}"/list"
       echo ${row} > ${tSub}"_"

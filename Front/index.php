@@ -7,7 +7,7 @@
 
   if(isset($_SESSION["uname"])){
       $gUname=$_SESSION["uname"] ;
-      $uH=getHead("user/pool/".$gUname);
+      $uH=getInfo("user/name/".$gUname);
 //print_r($uH);
       $gUid=$uH[0];
       // echo "uname=".$gUname;
