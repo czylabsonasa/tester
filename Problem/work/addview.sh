@@ -32,20 +32,28 @@ fi
 
 if test -z ${skel}
 then
-  skel="skel0"
-fi
-
-if ! test -e ${base}"/view/"${skel}
-then
-  echo "FROM="${skel}" does not exist."
-  exit 3
+  skel="skel.tar"
+else
+  if ! test -e ${base}"/view/"${skel}
+  then
+    echo "FROM="${skel}" does not exist."
+    exit 3
+  fi
 fi
 
 
 
 # mkdir ${pdir}
-cp -R ${base}"/view/"${skel} ${vdir}
+if [[ ${skel} == "skel.tar" ]]
+then
+  tar xf ${base}"/view/skel.tar"
+  mv skel ${vdir}
+else
+  cp -R ${base}"/view/"${skel} ${vdir}
+fi
+
 echo ${vname}_"${vtitle}" > ${vdir}"/info"
 echo ${vname}_"${vtitle}" >> ${base}"/view/list"
 
 exit 0
+

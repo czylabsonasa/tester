@@ -1,5 +1,5 @@
 <h2 id="belső-szorzat">belső szorzat</h2>
-<p>Számoljuk ki két vektor belső szorzatát! Input: két sor, melyek <span class="math inline">\(n\)</span>-<span class="math inline">\(n\)</span> <em>egész</em> számot tartalmaznak. Output: a belső szorzat. (<span class="math inline">\(1&lt;n&lt;1000\)</span>)</p>
+<p>Számoljuk ki két vektor belső szorzatát!<br> Input:<br> <span class="math inline">\(a_1\ldots a_n\)</span><br> <span class="math inline">\(b_1\ldots b_n\)</span><br> Output:<br> <span class="math inline">\(\sum_{k=1}^n a_k b_k\)</span><br> Feltételek: <span class="math inline">\(1&lt;n&lt;1000,\ -100\le a_k, b_k\le 100\)</span></p>
 <h3 id="példa-bemenet">Példa bemenet:</h3>
 <pre><code>
 9 -2 10 

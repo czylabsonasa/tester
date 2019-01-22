@@ -29,13 +29,13 @@ fi
 
 if test -z ${skel}
 then
-  skel="skel0"
-fi
-
-if ! test -e $base"/name/"${skel}
-then
-  echo "FROM="${skel}" does not exist."
-  exit 3
+  skel="skel.tar"
+else
+  if ! test -e $base"/name/"${skel}
+  then
+    echo "FROM="${skel}" does not exist."
+    exit 3
+  fi
 fi
 
 
@@ -47,8 +47,16 @@ echo ${cnt} > ${base}"/count"
 echo 'sorszám: '${cnt}
 
 # mkdir ${pdir}
-cp -R ${base}"/name/"${skel} ${pdir}
-> ${pdir}"/view"
+
+if [[ ${skel} == "skel.tar" ]]
+then
+  tar xf ${base}"/name/skel.tar"
+  mv skel ${pdir}
+else
+  cp -R ${base}"/name/"${skel} ${pdir}
+  > ${pdir}"/view"
+fi
+
 echo ${cnt}_${pname}_"${ptitle}" > ${pdir}"/info"
 echo ${cnt}_${pname}_"${ptitle}" >> ${base}"/name/list"
 

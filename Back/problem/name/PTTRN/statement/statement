@@ -1,0 +1,9 @@
+<h2 id="spéci-vektor">spéci vektor</h2>
+<p>Adott <span class="math inline">\(n,m\)</span> pozitív egészek esetén hozd létre a <span class="math inline">\(n -(n+1)\ldots (-1)^{m-1}(n+m-1)\)</span> vektort.</p>
+<h3 id="példa-bemenet">Példa bemenet:</h3>
+<pre><code>
+3 4
+</code></pre>
+<h3 id="példa-kimenet">Példa kimenet:</h3>
+<pre><code>
+3 -4 5 -6</code></pre>

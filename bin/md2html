@@ -2,4 +2,4 @@
 
 cat pre.md | pre.awk > statement.md
 
-pandoc  -t html5 statement.md -o statement --mathjax
+pandoc -t html5 statement.md -o statement --mathjax
